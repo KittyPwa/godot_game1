@@ -4,6 +4,7 @@ var points = 0
 
 @onready var label = %Label
 
+
 func add_points():
 	points += 1
 	print(points)
