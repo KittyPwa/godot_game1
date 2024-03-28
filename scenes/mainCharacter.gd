@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED_X = 400.0
-const SLOW_DOWN = 30.0
+const SLOW_DOWN = 40.0
 const JUMP_VELOCITY = -730.0
 @onready var sprite_2d = $Sprite2D
 
