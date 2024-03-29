@@ -1,0 +1,143 @@
+[gd_scene load_steps=18 format=3 uid="uid://bsmo8o4n0mlmn"]
+
+[ext_resource type="Script" path="res://scenes/DuckAi.gd" id="1_lskng"]
+[ext_resource type="Texture2D" uid="uid://d2d1ghfidtvti" path="res://Pixel Adventure 1/Free/Enemies/Duck/Idle (36x36).png" id="2_udvl3"]
+[ext_resource type="Texture2D" uid="uid://cgucr61dhn1b0" path="res://Pixel Adventure 1/Free/Enemies/Duck/Fall (36x36).png" id="3_4c11u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdgta"]
+atlas = ExtResource("2_udvl3")
+region = Rect2(0, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6rlv"]
+atlas = ExtResource("2_udvl3")
+region = Rect2(36, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_807gd"]
+atlas = ExtResource("2_udvl3")
+region = Rect2(72, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h6y1"]
+atlas = ExtResource("2_udvl3")
+region = Rect2(108, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqopv"]
+atlas = ExtResource("2_udvl3")
+region = Rect2(144, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydkdi"]
+atlas = ExtResource("2_udvl3")
+region = Rect2(180, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj545"]
+atlas = ExtResource("2_udvl3")
+region = Rect2(216, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrgbq"]
+atlas = ExtResource("2_udvl3")
+region = Rect2(252, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uis1f"]
+atlas = ExtResource("2_udvl3")
+region = Rect2(288, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b05p"]
+atlas = ExtResource("2_udvl3")
+region = Rect2(324, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06bhh"]
+atlas = ExtResource("3_4c11u")
+region = Rect2(0, 0, 36, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6tvqv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdgta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6rlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_807gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h6y1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqopv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydkdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj545")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrgbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uis1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b05p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06bhh")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpk4p"]
+size = Vector2(32, 22.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fb25v"]
+size = Vector2(70, 63)
+
+[node name="duck" type="CharacterBody2D"]
+position = Vector2(892, 494)
+script = ExtResource("1_lskng")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_6tvqv")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.778552
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_qpk4p")
+
+[node name="RayCast2D3" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 21)
+target_position = Vector2(-38, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -14)
+target_position = Vector2(-38, 0)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -4)
+target_position = Vector2(-38, 0)
+
+[node name="hitBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
+position = Vector2(-4, 4.5)
+shape = SubResource("RectangleShape2D_fb25v")
+
+[connection signal="mainCharacterIsDead" from="." to="." method="_on_main_character_is_dead"]
+[connection signal="area_entered" from="hitBox" to="." method="_on_hit_box_area_entered"]

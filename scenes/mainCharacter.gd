@@ -6,6 +6,7 @@ const SLOW_DOWN = 40.0
 const JUMP_VELOCITY = -730.0
 var jump_amount = 0
 var animation_name = ""
+
 @onready var sprite_2d = $Sprite2D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
