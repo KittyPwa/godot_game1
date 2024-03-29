@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0vlmss4a0bkf"]
+[gd_scene load_steps=24 format=3 uid="uid://c0vlmss4a0bkf"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_2gual"]
 [ext_resource type="Texture2D" uid="uid://ydbsmncg14mw" path="res://Green.png" id="2_65pvo"]
 [ext_resource type="Texture2D" uid="uid://nx0plsq4t00u" path="res://Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="3_5l2qu"]
 [ext_resource type="PackedScene" uid="uid://b0da5j78o5o4r" path="res://scenes/mainCharacter.tscn" id="4_oph4i"]
-[ext_resource type="PackedScene" uid="uid://bpxye770n5eld" path="res://scenes/enemyDuck.tscn" id="5_wqg7g"]
 [ext_resource type="PackedScene" uid="uid://c0akkuhnhuvmq" path="res://scenes/collectable.tscn" id="6_dnxyd"]
 [ext_resource type="PackedScene" uid="uid://db0oyyiotsenp" path="res://scenes/trophy.tscn" id="7_sb5pm"]
 [ext_resource type="PackedScene" uid="uid://c61w6dna50x4l" path="res://scenes/level2.tscn" id="8_0f8al"]
+[ext_resource type="Texture2D" uid="uid://d2d1ghfidtvti" path="res://Pixel Adventure 1/Free/Enemies/Duck/Idle (36x36).png" id="8_3s4uw"]
+[ext_resource type="Script" path="res://scenes/duck.gd" id="8_tkehn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kw4ku"]
 texture = ExtResource("3_5l2qu")
@@ -752,6 +753,87 @@ physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_kw4ku")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdgta"]
+atlas = ExtResource("8_3s4uw")
+region = Rect2(0, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6rlv"]
+atlas = ExtResource("8_3s4uw")
+region = Rect2(36, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_807gd"]
+atlas = ExtResource("8_3s4uw")
+region = Rect2(72, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h6y1"]
+atlas = ExtResource("8_3s4uw")
+region = Rect2(108, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqopv"]
+atlas = ExtResource("8_3s4uw")
+region = Rect2(144, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydkdi"]
+atlas = ExtResource("8_3s4uw")
+region = Rect2(180, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj545"]
+atlas = ExtResource("8_3s4uw")
+region = Rect2(216, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrgbq"]
+atlas = ExtResource("8_3s4uw")
+region = Rect2(252, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uis1f"]
+atlas = ExtResource("8_3s4uw")
+region = Rect2(288, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b05p"]
+atlas = ExtResource("8_3s4uw")
+region = Rect2(324, 0, 36, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6tvqv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdgta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6rlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_807gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h6y1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqopv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydkdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj545")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrgbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uis1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b05p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpk4p"]
+size = Vector2(32, 29)
+
 [node name="Node" type="Node"]
 
 [node name="GameManager" type="Node" parent="."]
@@ -782,9 +864,6 @@ position = Vector2(91, 431)
 position = Vector2(35, 39)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
-
-[node name="CharacterBody2D2" parent="SceneObjects" instance=ExtResource("5_wqg7g")]
-position = Vector2(380, 162)
 
 [node name="Collectables" type="Node" parent="SceneObjects"]
 
@@ -839,4 +918,22 @@ text = "Points : 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="duck" type="Area2D" parent="."]
+position = Vector2(374, 490)
+script = ExtResource("8_tkehn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="duck"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_6tvqv")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="duck"]
+position = Vector2(0, 6)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_qpk4p")
+
 [connection signal="area_entered" from="SceneObjects/trophy" to="GameManager" method="_on_trophy_area_entered"]
+[connection signal="body_entered" from="duck" to="GameManager" method="_on_rigid_body_2d_body_entered"]
+[connection signal="body_entered" from="duck" to="duck" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="duck" to="GameManager" method="_on_rigid_body_2d_body_shape_entered"]
