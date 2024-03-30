@@ -274,3 +274,10 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 position = Vector2(34, 29)
 shape = SubResource("RectangleShape2D_t47mg")
+
+[node name="coyoteTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.15
+one_shot = true
+
+[connection signal="timeout" from="coyoteTimer" to="." method="_on_coyote_timer_timeout"]
