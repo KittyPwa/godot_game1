@@ -2,13 +2,15 @@ extends Node
 @onready var label = %Label
 var tree = null
 
+
 func _ready():
 	tree = get_tree()
 
 func _unhandled_input(event):
-	if event is InputEventKey:
-		if Input.is_action_just_pressed("jump"):
-			reset()
+	if SignalBus.is_main_character_dead():
+		if event is InputEventKey:
+			if Input.is_action_just_pressed("jump"):
+				reset()
 
 func set_score(value):
 	label.text = "Points : " + str(value)
