@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo48wbip2tfx0"]
+
+[ext_resource type="AudioStream" uid="uid://dbn23jyruf2u7" path="res://music/background.wav" id="1_f57v2"]
+
+[node name="background" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_f57v2")
+volume_db = -20.0
+autoplay = true
+attenuation = 5.13244e-05
