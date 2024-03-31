@@ -5,11 +5,19 @@ var tree = null
 func _ready():
 	tree = get_tree()
 
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if Input.is_action_just_pressed("jump"):
+			reset()
+
 func set_score(value):
 	label.text = "Points : " + str(value)
 
-func _on_button_1_pressed():
+func reset():
 	SignalBus.reset_level()
+
+func _on_button_1_pressed():
+	reset()
 
 
 func _on_button_2_pressed():
