@@ -9,6 +9,7 @@ func hitMainCharacter():
 	hit_main_character.emit()
 
 func set_level(level):
+	print(level)
 	setLevel.emit(level)
 	updateLevel(level)
 	
