@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://doeqtpok6hoir"]
+
+[ext_resource type="Texture2D" uid="uid://bel3re2sfr55s" path="res://Pixel Adventure 1/Free/Traps/Spikes/Idle.png" id="1_hcic2"]
+[ext_resource type="Script" path="res://scenes/traps/spikes.gd" id="1_r3w1e"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_r3w1e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("1_hcic2")
+
+[node name="hitbox" type="CollisionPolygon2D" parent="."]
+position = Vector2(-7.4961, 16.1641)
+scale = Vector2(1.23698, 1.18164)
+polygon = PackedVector2Array(-13.14, 6.47273, -5.46, -10.9818, -2.9, -10.9818, 4.78, 3.56364, 7.34, 3.56364, 15.02, -10.9818, 17.58, -10.9818, 25.26, 6.47273)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

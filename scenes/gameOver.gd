@@ -8,9 +8,10 @@ func _ready():
 func set_score(value):
 	label.text = "Points : " + str(value)
 
-func _on_button_pressed():
-	tree.change_scene_to_file("res://scenes/level1.tscn")
+func _on_button_1_pressed():
+	SignalBus.reset_level()
 
 
 func _on_button_2_pressed():
-	tree.change_scene_to_file("res://scenes/main_menu.tscn")
+	SignalBus.set_level("res://scenes/main_menu.tscn")
+

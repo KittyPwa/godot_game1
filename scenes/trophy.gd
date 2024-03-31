@@ -1,7 +1,8 @@
 extends Area2D
 
-@export var targetLevel : PackedScene
+@export var targetLevelName : String
 
 func _on_body_entered(body):
 	if(body.name == "mainCharacter"):
-		get_tree().change_scene_to_packed(targetLevel)
+		print(targetLevelName)
+		SignalBus.set_level(targetLevelName)
