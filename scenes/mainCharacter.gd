@@ -17,6 +17,8 @@ var wall_jumped = false
 @onready var double_jump_sound = %doubleJumpSound
 @onready var wall_jump = %wallJump
 @onready var cieiling_hit = %cieilingHit
+@onready var ceiling_hit_particels = %ceilingHitParticels
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -61,6 +63,7 @@ func manage_y_movement(delta):
 		wall_jumped = false
 		jump_amount = 1
 		cieiling_hit.play()
+		ceiling_hit_particels.emit()
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
 		var do_jump = false

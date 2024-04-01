@@ -1007,7 +1007,7 @@ offset_bottom = 279.5
 
 [node name="trophy" parent="." instance=ExtResource("8_lhqld")]
 position = Vector2(2116, 81)
-targetLevelName = "res://scenes/main_menu.tscn"
+targetLevelName = "res://scenes/level5.tscn"
 
 [node name="background" parent="." instance=ExtResource("9_2rtqg")]
 targetBackgroundPath = "res://music/caverns.wav"

@@ -5,4 +5,4 @@ extends Area2D
 func _on_body_entered(body):
 	if(body.name == "mainCharacter"):
 		print(targetLevelName)
-		SignalBus.set_level(targetLevelName)
+		SignalBus.call_deferred("set_level",targetLevelName)

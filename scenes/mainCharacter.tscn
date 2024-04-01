@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b0da5j78o5o4r"]
+[gd_scene load_steps=44 format=3 uid="uid://b0da5j78o5o4r"]
 
 [ext_resource type="Script" path="res://scenes/mainCharacter.gd" id="1_j0tvm"]
 [ext_resource type="Texture2D" uid="uid://brs4x2mbjrlnd" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Jump (32x32).png" id="1_rfhud"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://10islw5wx7v" path="res://music/doubleJump.wav" id="8_miexn"]
 [ext_resource type="AudioStream" uid="uid://d3rtpk0m2ro8y" path="res://music/wallJump.wav" id="9_5mnds"]
 [ext_resource type="AudioStream" uid="uid://ot43rk1bt6xh" path="res://music/cielingHit.wav" id="10_7yak0"]
+[ext_resource type="PackedScene" uid="uid://dhwi3o6lgba4m" path="res://cielingHitParticles.tscn" id="11_6hqfg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ycps"]
 atlas = ExtResource("2_8h6r6")
@@ -306,5 +307,9 @@ volume_db = -30.0
 unique_name_in_owner = true
 stream = ExtResource("10_7yak0")
 volume_db = -30.0
+
+[node name="ceilingHitParticels" parent="." instance=ExtResource("11_6hqfg")]
+unique_name_in_owner = true
+position = Vector2(34, 19)
 
 [connection signal="timeout" from="coyoteTimer" to="." method="_on_coyote_timer_timeout"]

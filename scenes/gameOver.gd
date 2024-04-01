@@ -2,7 +2,6 @@ extends Node
 @onready var label = %Label
 var tree = null
 
-@onready var background = %background
 
 func _ready():
 	tree = get_tree()
@@ -17,12 +16,12 @@ func set_score(value):
 	label.text = "Points : " + str(value)
 
 func reset():	
-	SignalBus.reset_level()
+	SignalBus.call_deferred("reset_level")
 
 func _on_button_1_pressed():
 	reset()
 
 
 func _on_button_2_pressed():
-	SignalBus.set_level("res://scenes/main_menu.tscn")
+	SignalBus.call_deferred("set_level","res://scenes/main_menu.tscn")
 

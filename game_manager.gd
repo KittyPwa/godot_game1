@@ -4,7 +4,6 @@ var points = 0
 
 @onready var game_over_node = %gameOver
 @onready var main_character = %mainCharacter
-@onready var background = %background
 
 @onready var label = %Label
 
