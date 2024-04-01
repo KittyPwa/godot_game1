@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://c0akkuhnhuvmq"]
+[gd_scene load_steps=23 format=3 uid="uid://c0akkuhnhuvmq"]
 
 [ext_resource type="Script" path="res://scenes/collectable.gd" id="1_bsd1r"]
 [ext_resource type="Texture2D" uid="uid://bwba0c5akqxip" path="res://Pixel Adventure 1/Free/Items/Fruits/Cherries.png" id="1_mk2dn"]
+[ext_resource type="AudioStream" uid="uid://by24b66mg6qya" path="res://music/pickupCherry.wav" id="3_bvj15"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35l7j"]
 atlas = ExtResource("1_mk2dn")
@@ -145,5 +146,10 @@ frame_progress = 0.583884
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xoi5p")
+
+[node name="pickupCherry" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_bvj15")
+volume_db = -30.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

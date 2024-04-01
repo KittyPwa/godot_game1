@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b0da5j78o5o4r"]
+[gd_scene load_steps=43 format=3 uid="uid://b0da5j78o5o4r"]
 
 [ext_resource type="Script" path="res://scenes/mainCharacter.gd" id="1_j0tvm"]
 [ext_resource type="Texture2D" uid="uid://brs4x2mbjrlnd" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Jump (32x32).png" id="1_rfhud"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://jvdg1wqosm2s" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Fall (32x32).png" id="2_172ys"]
 [ext_resource type="Texture2D" uid="uid://cfqbbn4viof6a" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Idle (32x32).png" id="2_g7lv0"]
 [ext_resource type="Texture2D" uid="uid://c88io8mo18anu" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Run (32x32).png" id="3_0ydb6"]
+[ext_resource type="AudioStream" uid="uid://6co5xoi7llxq" path="res://music/jump.wav" id="7_msolw"]
+[ext_resource type="AudioStream" uid="uid://10islw5wx7v" path="res://music/doubleJump.wav" id="8_miexn"]
+[ext_resource type="AudioStream" uid="uid://d3rtpk0m2ro8y" path="res://music/wallJump.wav" id="9_5mnds"]
+[ext_resource type="AudioStream" uid="uid://ot43rk1bt6xh" path="res://music/cielingHit.wav" id="10_7yak0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ycps"]
 atlas = ExtResource("2_8h6r6")
@@ -263,11 +267,13 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(31.5, 36)
 shape = SubResource("RectangleShape2D_red1v")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="hitBox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 visible = false
@@ -278,5 +284,27 @@ shape = SubResource("RectangleShape2D_t47mg")
 unique_name_in_owner = true
 wait_time = 0.15
 one_shot = true
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="jumpSound" type="AudioStreamPlayer" parent="sounds"]
+unique_name_in_owner = true
+stream = ExtResource("7_msolw")
+volume_db = -30.0
+
+[node name="doubleJumpSound" type="AudioStreamPlayer" parent="sounds"]
+unique_name_in_owner = true
+stream = ExtResource("8_miexn")
+volume_db = -30.0
+
+[node name="wallJump" type="AudioStreamPlayer" parent="sounds"]
+unique_name_in_owner = true
+stream = ExtResource("9_5mnds")
+volume_db = -30.0
+
+[node name="cieilingHit" type="AudioStreamPlayer" parent="sounds"]
+unique_name_in_owner = true
+stream = ExtResource("10_7yak0")
+volume_db = -30.0
 
 [connection signal="timeout" from="coyoteTimer" to="." method="_on_coyote_timer_timeout"]

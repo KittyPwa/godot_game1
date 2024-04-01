@@ -791,6 +791,8 @@ position = Vector2(35, 39)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
+[node name="Sounds" type="Node" parent="SceneObjects/mainCharacter"]
+
 [node name="Collectables" type="Node" parent="SceneObjects"]
 
 [node name="Collectable" parent="SceneObjects/Collectables" instance=ExtResource("6_dnxyd")]
