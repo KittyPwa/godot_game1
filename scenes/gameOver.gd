@@ -2,6 +2,7 @@ extends Node
 @onready var label = %Label
 var tree = null
 
+@onready var background = %background
 
 func _ready():
 	tree = get_tree()
@@ -15,7 +16,7 @@ func _unhandled_input(event):
 func set_score(value):
 	label.text = "Points : " + str(value)
 
-func reset():
+func reset():	
 	SignalBus.reset_level()
 
 func _on_button_1_pressed():

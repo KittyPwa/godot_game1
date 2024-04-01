@@ -42,7 +42,7 @@ func _physics_process(delta):
 		if not is_on_floor():
 			velocity.y += gravity * delta	
 		else:
-			jump_amount = 0
+			jump_amount = 1
 			wall_jumped = false
 		
 		if direction_x:

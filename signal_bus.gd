@@ -2,6 +2,7 @@ extends Node
 
 signal hit_main_character
 signal setLevel
+signal resetMusic
 
 var currentLevel = ''
 var main_character_is_dead = false
@@ -22,5 +23,6 @@ func updateLevel(level):
 	currentLevel = level
 	
 func reset_level():
+	resetMusic.emit()
 	main_character_is_dead = false
 	setLevel.emit(currentLevel)

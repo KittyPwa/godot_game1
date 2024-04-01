@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgm7bojjehaxp"]
+[gd_scene load_steps=12 format=3 uid="uid://bgm7bojjehaxp"]
 
 [ext_resource type="PackedScene" uid="uid://drljy05vt1umx" path="res://scenes/game_manager.tscn" id="1_6c7ir"]
 [ext_resource type="Texture2D" uid="uid://kekamxu4tf81" path="res://Pixel Adventure 1/Free/Background/Blue.png" id="2_5dr1h"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://doeqtpok6hoir" path="res://scenes/traps/spikes.tscn" id="6_rsfw3"]
 [ext_resource type="PackedScene" uid="uid://d3pvaayrqvfip" path="res://scenes/gameOver.tscn" id="7_mkf0l"]
 [ext_resource type="PackedScene" uid="uid://db0oyyiotsenp" path="res://scenes/trophy.tscn" id="8_lhqld"]
+[ext_resource type="PackedScene" uid="uid://32mdwmfvy0vq" path="res://music/background.tscn" id="9_2rtqg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kw4ku"]
 texture = ExtResource("3_jderd")
@@ -779,7 +780,6 @@ sources/0 = SubResource("TileSetAtlasSource_kw4ku")
 
 [node name="GameManager" parent="." instance=ExtResource("1_6c7ir")]
 unique_name_in_owner = true
-selfName = "level3"
 
 [node name="SceneObjects" type="Node" parent="."]
 
@@ -1009,3 +1009,6 @@ offset_bottom = 279.5
 [node name="trophy" parent="." instance=ExtResource("8_lhqld")]
 position = Vector2(2116, 81)
 targetLevelName = "res://scenes/main_menu.tscn"
+
+[node name="background" parent="." instance=ExtResource("9_2rtqg")]
+targetBackgroundPath = "res://music/caverns.wav"
