@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c61w6dna50x4l"]
+[gd_scene load_steps=11 format=3 uid="uid://c61w6dna50x4l"]
 
 [ext_resource type="PackedScene" uid="uid://drljy05vt1umx" path="res://scenes/game_manager.tscn" id="1_8sqkr"]
 [ext_resource type="Texture2D" uid="uid://kekamxu4tf81" path="res://Pixel Adventure 1/Free/Background/Blue.png" id="2_2vk2m"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b0da5j78o5o4r" path="res://scenes/mainCharacter.tscn" id="4_357oh"]
 [ext_resource type="PackedScene" uid="uid://c0akkuhnhuvmq" path="res://scenes/collectable.tscn" id="6_b2mqn"]
 [ext_resource type="PackedScene" uid="uid://d3pvaayrqvfip" path="res://scenes/gameOver.tscn" id="7_avln1"]
-[ext_resource type="PackedScene" uid="uid://bsmo8o4n0mlmn" path="res://scenes/duck.tscn" id="7_cgsbx"]
 [ext_resource type="PackedScene" uid="uid://db0oyyiotsenp" path="res://scenes/trophy.tscn" id="7_x5sml"]
 [ext_resource type="PackedScene" uid="uid://32mdwmfvy0vq" path="res://music/background.tscn" id="9_go6ek"]
 
@@ -840,12 +839,6 @@ position = Vector2(747, -458)
 position = Vector2(285, -663)
 
 [node name="enemies" type="Node" parent="SceneObjects"]
-
-[node name="duck" parent="SceneObjects/enemies" instance=ExtResource("7_cgsbx")]
-position = Vector2(247, -44)
-
-[node name="duck2" parent="SceneObjects/enemies" instance=ExtResource("7_cgsbx")]
-position = Vector2(737, -468)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
