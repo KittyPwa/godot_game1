@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
 var can_move = true
-const SPEED_X = 400.0
+const MAX_SPEED_X = 400.0
+const INC_SPEED_X = 60.0
+var x_speed = 0.0
 const SLOW_DOWN = 40.0
 const JUMP_VELOCITY = -730.0
 const WALL_JUMP_EXTRA_VELOCITY = -365.0
@@ -46,7 +48,7 @@ func manage_animations():
 func manage_x_movement():
 	var direction_x = Input.get_axis("left", "right")
 	if direction_x:
-		velocity.x = direction_x * SPEED_X
+		velocity.x = MAX_SPEED_X * direction_x if abs(velocity.x) > MAX_SPEED_X else velocity.x + direction_x * INC_SPEED_X
 	else:
 		velocity.x = move_toward(velocity.x, 0, SLOW_DOWN)
 

@@ -293,13 +293,13 @@ texture = ExtResource("3_1yqae")
 3:4/0 = 0
 3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:4/0/physics_layer_0/angular_velocity = 0.0
-3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.125, -0.25, 8, -0.125, 8, 8, -3.125, 8)
 3:4/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 3:4/0/physics_layer_1/angular_velocity = 0.0
 4:4/0 = 0
 4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:4/0/physics_layer_0/angular_velocity = 0.0
-4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3, 0.125, -2.875, -0.125, 8, -8, 8)
 4:4/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 4:4/0/physics_layer_1/angular_velocity = 0.0
 6:4/0 = 0
@@ -390,13 +390,13 @@ texture = ExtResource("3_1yqae")
 3:5/0 = 0
 3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:5/0/physics_layer_0/angular_velocity = 0.0
-3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.25, -8, 8, -8, 8, 2.875, -0.25, 2.625)
 3:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 3:5/0/physics_layer_1/angular_velocity = 0.0
 4:5/0 = 0
 4:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:5/0/physics_layer_0/angular_velocity = 0.0
-4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 3.875, -8, 3.875, 0.125, -8, -0.125)
 4:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 4:5/0/physics_layer_1/angular_velocity = 0.0
 6:5/0 = 0
@@ -865,10 +865,7 @@ position = Vector2(172, 362)
 position = Vector2(220, 362)
 
 [node name="spike8" parent="SceneObjects/spikeTraps" instance=ExtResource("6_uob8y")]
-position = Vector2(189, 92)
-
-[node name="spike9" parent="SceneObjects/spikeTraps" instance=ExtResource("6_uob8y")]
-position = Vector2(240, 92)
+position = Vector2(207, 92)
 
 [node name="spike10" parent="SceneObjects/spikeTraps" instance=ExtResource("6_uob8y")]
 position = Vector2(168, 668)

@@ -94,5 +94,5 @@ text = "Main menu"
 
 [connection signal="pressed" from="Panel/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="Panel/Button1" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Panel/Button2" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Panel/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/Button2" to="." method="_on_button_pressed"]
