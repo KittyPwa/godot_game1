@@ -876,7 +876,6 @@ offset_bottom = 221.5
 
 [node name="background" parent="." instance=ExtResource("10_aedlo")]
 unique_name_in_owner = true
-bus = &"background"
 
 [node name="GPUParticles2D" parent="." instance=ExtResource("11_xcrtg")]
 process_material = SubResource("ParticleProcessMaterial_mfuem")

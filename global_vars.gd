@@ -8,6 +8,12 @@ const constants = {
 		"JUMP_VELOCITY" = -730.0,
 		"WALL_JUMP_EXTRA_VELOCITY" = -365.0
 	},	
+	"ennemies" = {
+		"bat" =  {
+			"SPEED" = -150,
+			"JUMP_VELOCITY" = -400,
+		},
+	},
 	"backgroundVolume" = {
 		"baseVolume" = -20,
 		"minSlider" = 0,
