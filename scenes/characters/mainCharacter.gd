@@ -11,6 +11,7 @@ var jump_amount = 0
 var animation_name = ""
 var was_on_floor = false
 var wall_jumped = false
+
 @onready var coyote_timer = %coyoteTimer
 
 @onready var sprite_2d = $Sprite2D
@@ -29,6 +30,7 @@ func kill():
 	can_move = false
 
 func manage_animations():
+	var upsideDown = false
 	if(velocity.x != 0):
 			animation_name = "running"
 	else:
@@ -47,10 +49,15 @@ func manage_animations():
 
 func manage_x_movement():
 	var direction_x = Input.get_axis("left", "right")
+	var velocity_x = 0
 	if direction_x:
-		velocity.x = MAX_SPEED_X * direction_x if abs(velocity.x) > MAX_SPEED_X else velocity.x + direction_x * INC_SPEED_X
+		if is_on_floor():
+			velocity_x = MAX_SPEED_X * direction_x if abs(velocity.x) > MAX_SPEED_X else velocity.x + direction_x * INC_SPEED_X
+		else:
+			velocity_x = MAX_SPEED_X * direction_x
 	else:
-		velocity.x = move_toward(velocity.x, 0, SLOW_DOWN)
+		velocity_x = move_toward(velocity.x, 0, SLOW_DOWN)
+	velocity.x = velocity_x
 
 func manage_y_movement(delta):
 	if not is_on_floor():
@@ -94,6 +101,7 @@ func _physics_process(delta):
 		manage_y_movement(delta)		
 		
 		was_on_floor = is_on_floor()
+		
 		move_and_slide()
 		
 		var is_left = velocity.x < 0

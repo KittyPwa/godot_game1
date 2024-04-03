@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://drljy05vt1umx" path="res://scenes/game_manager.tscn" id="1_771k0"]
 [ext_resource type="Texture2D" uid="uid://ydbsmncg14mw" path="res://Green.png" id="2_65pvo"]
 [ext_resource type="Texture2D" uid="uid://nx0plsq4t00u" path="res://Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="3_5l2qu"]
-[ext_resource type="PackedScene" uid="uid://b0da5j78o5o4r" path="res://scenes/mainCharacter.tscn" id="4_oph4i"]
-[ext_resource type="PackedScene" uid="uid://c0akkuhnhuvmq" path="res://scenes/collectable.tscn" id="6_dnxyd"]
+[ext_resource type="PackedScene" uid="uid://b0da5j78o5o4r" path="res://scenes/characters/mainCharacter.tscn" id="4_oph4i"]
+[ext_resource type="PackedScene" uid="uid://c0akkuhnhuvmq" path="res://scenes/collectables/collectable.tscn" id="6_dnxyd"]
 [ext_resource type="PackedScene" uid="uid://db0oyyiotsenp" path="res://scenes/trophy.tscn" id="7_sb5pm"]
-[ext_resource type="PackedScene" uid="uid://bsmo8o4n0mlmn" path="res://scenes/duck.tscn" id="9_dweps"]
+[ext_resource type="PackedScene" uid="uid://bsmo8o4n0mlmn" path="res://scenes/enemies/duck.tscn" id="9_dweps"]
 [ext_resource type="Script" path="res://scenes/enemies.gd" id="9_g4t3b"]
 [ext_resource type="PackedScene" uid="uid://32mdwmfvy0vq" path="res://music/background.tscn" id="10_aedlo"]
 [ext_resource type="PackedScene" uid="uid://d3pvaayrqvfip" path="res://scenes/gameOver.tscn" id="10_w2ch3"]
@@ -823,7 +823,7 @@ position = Vector2(1330, 52)
 
 [node name="trophy" parent="SceneObjects" instance=ExtResource("7_sb5pm")]
 position = Vector2(1808, 466)
-targetLevelName = "res://scenes/level2.tscn"
+targetLevelName = "res://scenes/levels/level2.tscn"
 
 [node name="enemies" type="Node" parent="SceneObjects"]
 script = ExtResource("9_g4t3b")

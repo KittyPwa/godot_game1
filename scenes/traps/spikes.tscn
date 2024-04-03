@@ -14,6 +14,6 @@ texture = ExtResource("1_hcic2")
 [node name="hitbox" type="CollisionPolygon2D" parent="."]
 position = Vector2(-7.4961, 16.1641)
 scale = Vector2(1.23698, 1.18164)
-polygon = PackedVector2Array(-13.14, 6.47273, -5.46, -10.9818, -2.9, -10.9818, 4.78, 3.56364, 7.34, 3.56364, 15.02, -10.9818, 17.58, -10.9818, 25.26, 6.47273)
+polygon = PackedVector2Array(-8.49157, 4.93881, -5.25789, -6.06284, -0.407363, -6.06284, 4.78, 3.56364, 7.34, 3.56364, 12.5274, -6.06284, 17.3779, -6.06284, 19.8032, 4.93881)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

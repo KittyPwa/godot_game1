@@ -1,6 +1,6 @@
 [gd_scene load_steps=56 format=3 uid="uid://b0da5j78o5o4r"]
 
-[ext_resource type="Script" path="res://scenes/mainCharacter.gd" id="1_j0tvm"]
+[ext_resource type="Script" path="res://scenes/characters/mainCharacter.gd" id="1_j0tvm"]
 [ext_resource type="Texture2D" uid="uid://brs4x2mbjrlnd" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Jump (32x32).png" id="1_rfhud"]
 [ext_resource type="Texture2D" uid="uid://vrtpahegnhhv" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Double Jump (32x32).png" id="2_8h6r6"]
 [ext_resource type="Texture2D" uid="uid://jvdg1wqosm2s" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Fall (32x32).png" id="2_172ys"]
@@ -334,8 +334,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_red1v"]
 size = Vector2(45, 56)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t47mg"]
-size = Vector2(48, 56)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tay87"]
+radius = 23.0
+height = 50.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_j0tvm")
@@ -346,9 +347,8 @@ texture_filter = 1
 position = Vector2(32, 32)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_0at4k")
-animation = &"ceilingJump"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.369311
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -359,8 +359,8 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="hitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
-position = Vector2(31, 35)
-shape = SubResource("RectangleShape2D_t47mg")
+position = Vector2(32, 40)
+shape = SubResource("CapsuleShape2D_tay87")
 
 [node name="coyoteTimer" type="Timer" parent="."]
 unique_name_in_owner = true

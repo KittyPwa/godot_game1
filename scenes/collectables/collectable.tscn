@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://c0akkuhnhuvmq"]
 
-[ext_resource type="Script" path="res://scenes/collectable.gd" id="1_bsd1r"]
+[ext_resource type="Script" path="res://scenes/collectables/collectable.gd" id="1_bsd1r"]
 [ext_resource type="Texture2D" uid="uid://bwba0c5akqxip" path="res://Pixel Adventure 1/Free/Items/Fruits/Cherries.png" id="1_mk2dn"]
 [ext_resource type="AudioStream" uid="uid://by24b66mg6qya" path="res://music/pickupCherry.wav" id="3_bvj15"]
 
