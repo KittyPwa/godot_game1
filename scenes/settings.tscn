@@ -1,0 +1,169 @@
+[gd_scene load_steps=7 format=3 uid="uid://68gni802hogi"]
+
+[ext_resource type="Script" path="res://scenes/settings.gd" id="1_0a2ac"]
+[ext_resource type="Texture2D" uid="uid://biou8gv571xnc" path="res://Pixel Adventure 1/Free/Background/Green.png" id="1_ik12b"]
+[ext_resource type="PackedScene" uid="uid://dk5hgg5ab0vlq" path="res://music/volumeControl.tscn" id="2_n8c0m"]
+[ext_resource type="PackedScene" uid="uid://drljy05vt1umx" path="res://scenes/game_manager.tscn" id="2_x24wm"]
+[ext_resource type="Texture2D" uid="uid://ey161a0md2o0" path="res://settings.png" id="3_yyvro"]
+[ext_resource type="PackedScene" uid="uid://32mdwmfvy0vq" path="res://music/background.tscn" id="5_wmfyc"]
+
+[node name="Settings" type="Node2D"]
+script = ExtResource("1_0a2ac")
+
+[node name="GameManager" parent="." instance=ExtResource("2_x24wm")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_ik12b")
+stretch_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -33.0
+offset_right = 111.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background volume" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.5
+offset_top = 20.5
+offset_right = 100.5
+offset_bottom = 43.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Background Volume"
+horizontal_alignment = 1
+
+[node name="background" parent="TextureRect" instance=ExtResource("2_n8c0m")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.5
+offset_top = 52.0
+offset_right = 100.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+bus_name = "background"
+
+[node name="sfx volume" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.5
+offset_top = 71.5
+offset_right = 100.5
+offset_bottom = 94.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="sfx" parent="TextureRect" instance=ExtResource("2_n8c0m")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.5
+offset_top = 101.0
+offset_right = 100.5
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+bus_name = "sfx"
+
+[node name="Master volume" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -27.5
+offset_right = 59.0
+offset_bottom = -4.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Master Volume"
+
+[node name="master" parent="TextureRect" instance=ExtResource("2_n8c0m")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = -8.0
+offset_right = 101.5
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+bus_name = "Master"
+
+[node name="settingsImg" type="TextureRect" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -122.0
+offset_right = 161.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_yyvro")
+
+[node name="BackToMenu" type="Button" parent="TextureRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -559.0
+offset_top = 256.0
+offset_right = -409.0
+offset_bottom = 306.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Main menu"
+
+[node name="background" parent="." instance=ExtResource("5_wmfyc")]
+unique_name_in_owner = true
+targetBackgroundPath = "res://music/background.wav"
+
+[connection signal="pressed" from="TextureRect/BackToMenu" to="." method="_on_back_to_menu_pressed"]

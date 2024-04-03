@@ -1,5 +1,8 @@
 extends Node
 
+@onready var background = %background
+
+
 func _on_level_1_pressed():
 	SignalBus.set_level("res://scenes/levels/level1.tscn")
 
@@ -17,3 +20,7 @@ func _on_level_5_pressed():
 	
 func _on_level_6_pressed():
 	SignalBus.set_level("res://scenes/levels/level6.tscn")
+
+func _on_settings_pressed():
+	background.reset()
+	SignalBus.set_level("res://scenes/settings.tscn")

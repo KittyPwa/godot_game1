@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c160vou2ejchm"]
+[gd_scene load_steps=7 format=3 uid="uid://c160vou2ejchm"]
 
 [ext_resource type="Texture2D" uid="uid://ydbsmncg14mw" path="res://Green.png" id="1_rpqjc"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_w67so"]
 [ext_resource type="Texture2D" uid="uid://dm32egfg8hqb" path="res://jump.png" id="2_2ckti"]
 [ext_resource type="PackedScene" uid="uid://drljy05vt1umx" path="res://scenes/game_manager.tscn" id="2_nlerq"]
 [ext_resource type="PackedScene" uid="uid://32mdwmfvy0vq" path="res://music/background.tscn" id="5_726f2"]
+[ext_resource type="Texture2D" uid="uid://ctr8ad4g4mmoj" path="res://Pixel Adventure 1/Free/Other/settingsIcon.png" id="5_sph26"]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_w67so")
@@ -21,23 +22,9 @@ grow_vertical = 2
 texture = ExtResource("1_rpqjc")
 stretch_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Level1" type="Button" parent="TextureRect2"]
 unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -98.0
-offset_top = -107.0
-offset_right = 96.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_2ckti")
-
-[node name="Level1" type="Button" parent="."]
-unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -52,8 +39,9 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Level 1"
 
-[node name="Level2" type="Button" parent="."]
+[node name="Level2" type="Button" parent="TextureRect2"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -68,8 +56,9 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Level 2"
 
-[node name="Level3" type="Button" parent="."]
+[node name="Level3" type="Button" parent="TextureRect2"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -84,8 +73,9 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Level 3"
 
-[node name="Level4" type="Button" parent="."]
+[node name="Level4" type="Button" parent="TextureRect2"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -100,8 +90,9 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Level 4"
 
-[node name="Level5" type="Button" parent="."]
+[node name="Level5" type="Button" parent="TextureRect2"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -117,8 +108,9 @@ theme_override_font_sizes/font_size = 30
 text = "Level 5
 "
 
-[node name="Level6" type="Button" parent="."]
+[node name="Level6" type="Button" parent="TextureRect2"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -134,12 +126,47 @@ theme_override_font_sizes/font_size = 30
 text = "Level 6
 "
 
+[node name="settings" type="MenuButton" parent="TextureRect2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 467.0
+offset_top = -280.0
+offset_right = 795.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 30
+icon = ExtResource("5_sph26")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -107.0
+offset_right = 96.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2ckti")
+
 [node name="background" parent="." instance=ExtResource("5_726f2")]
+unique_name_in_owner = true
 targetBackgroundPath = "res://music/background.wav"
 
-[connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
-[connection signal="pressed" from="Level2" to="." method="_on_level_2_pressed"]
-[connection signal="pressed" from="Level3" to="." method="_on_level_3_pressed"]
-[connection signal="pressed" from="Level4" to="." method="_on_level_4_pressed"]
-[connection signal="pressed" from="Level5" to="." method="_on_level_5_pressed"]
-[connection signal="pressed" from="Level6" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="TextureRect2/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="TextureRect2/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="TextureRect2/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="TextureRect2/Level4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="TextureRect2/Level5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="TextureRect2/Level6" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="TextureRect2/settings" to="." method="_on_settings_pressed"]

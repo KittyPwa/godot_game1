@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 var can_move = true
-const MAX_SPEED_X = 400.0
-const INC_SPEED_X = 60.0
+const MAX_SPEED_X = GlobalVars.constants.mainCharacter.MAX_SPEED_X
+const INC_SPEED_X = GlobalVars.constants.mainCharacter.INC_SPEED_X
+const SLOW_DOWN = GlobalVars.constants.mainCharacter.SLOW_DOWN
+const JUMP_VELOCITY = GlobalVars.constants.mainCharacter.JUMP_VELOCITY
+const WALL_JUMP_EXTRA_VELOCITY = GlobalVars.constants.mainCharacter.WALL_JUMP_EXTRA_VELOCITY
 var x_speed = 0.0
-const SLOW_DOWN = 40.0
-const JUMP_VELOCITY = -730.0
-const WALL_JUMP_EXTRA_VELOCITY = -365.0
 var jump_amount = 0
 var animation_name = ""
 var was_on_floor = false

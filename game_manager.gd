@@ -10,7 +10,6 @@ var points = 0
 func _ready():
 	SignalBus.connect("hit_main_character", game_over)
 	SignalBus.connect("setLevel", updateLevel)
-	print(self)
 
 func updateLevel(level):
 	get_tree().change_scene_to_file(level)

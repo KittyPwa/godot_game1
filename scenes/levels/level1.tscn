@@ -799,8 +799,6 @@ position = Vector2(35, 39)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
-[node name="Sounds" type="Node" parent="SceneObjects/mainCharacter"]
-
 [node name="Collectables" type="Node" parent="SceneObjects"]
 
 [node name="Collectable" parent="SceneObjects/Collectables" instance=ExtResource("6_dnxyd")]
@@ -878,6 +876,7 @@ offset_bottom = 221.5
 
 [node name="background" parent="." instance=ExtResource("10_aedlo")]
 unique_name_in_owner = true
+bus = &"background"
 
 [node name="GPUParticles2D" parent="." instance=ExtResource("11_xcrtg")]
 process_material = SubResource("ParticleProcessMaterial_mfuem")

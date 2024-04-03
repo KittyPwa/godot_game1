@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://signal_bus.gd"
 MusicProgress="*res://music_progress.gd"
+GlobalVars="*res://global_vars.gd"
 
 [display]
 
