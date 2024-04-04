@@ -10,7 +10,7 @@ const constants = {
 	},	
 	"ennemies" = {
 		"bat" =  {
-			"SPEED" = -150,
+			"SPEED" = -350,
 			"JUMP_VELOCITY" = -400,
 		},
 	},
