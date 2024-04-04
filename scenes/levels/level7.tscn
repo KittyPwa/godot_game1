@@ -956,3 +956,21 @@ vertical_move = true
 position = Vector2(612, -435)
 horizontal_move = true
 vertical_move = true
+
+[node name="Collectable" parent="." instance=ExtResource("5_3dq3v")]
+position = Vector2(1025, 488)
+
+[node name="Collectable2" parent="." instance=ExtResource("5_3dq3v")]
+position = Vector2(576, 342)
+
+[node name="Collectable3" parent="." instance=ExtResource("5_3dq3v")]
+position = Vector2(205, 249)
+
+[node name="Collectable4" parent="." instance=ExtResource("5_3dq3v")]
+position = Vector2(235, -139)
+
+[node name="Collectable5" parent="." instance=ExtResource("5_3dq3v")]
+position = Vector2(368, -605)
+
+[node name="Collectable6" parent="." instance=ExtResource("5_3dq3v")]
+position = Vector2(777, -249)
