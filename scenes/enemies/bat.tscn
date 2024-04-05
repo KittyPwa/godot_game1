@@ -162,11 +162,6 @@ height = 38.0
 script = ExtResource("1_tn6dd")
 is_killable = true
 
-[node name="RayCast2D3" type="RayCast2D" parent="."]
-unique_name_in_owner = true
-scale = Vector2(2, 2)
-target_position = Vector2(-14.5, 0)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
@@ -190,33 +185,38 @@ scale = Vector2(2, 2)
 position = Vector2(1, -4.37114e-08)
 shape = SubResource("CapsuleShape2D_4gf43")
 
+[node name="RayCast2D3" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+target_position = Vector2(-7, 0)
+
 [node name="RayCast2D" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, 20)
 scale = Vector2(2, 2)
-target_position = Vector2(-11.5, -1)
+target_position = Vector2(-5.5, 0)
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -18)
 scale = Vector2(2, 2)
-target_position = Vector2(-10.5, -0.5)
+target_position = Vector2(-6, 0)
 
 [node name="RayCast2D4" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 scale = Vector2(2, 2)
-target_position = Vector2(0, 13.5)
+target_position = Vector2(0, 7.5)
 
 [node name="RayCast2D5" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(21, 0)
 scale = Vector2(2, 2)
-target_position = Vector2(0, 11.5)
+target_position = Vector2(0, 7)
 
 [node name="RayCast2D6" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-20, 0)
 scale = Vector2(2, 2)
-target_position = Vector2(0.5, 11.5)
+target_position = Vector2(0, 7)
 
 [connection signal="area_entered" from="hitBox" to="." method="_on_hit_box_area_entered"]

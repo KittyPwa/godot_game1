@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://che4whe8i34kg"]
+[gd_scene load_steps=13 format=3 uid="uid://che4whe8i34kg"]
 
 [ext_resource type="PackedScene" uid="uid://drljy05vt1umx" path="res://scenes/game_manager.tscn" id="1_60ymt"]
 [ext_resource type="Texture2D" uid="uid://kekamxu4tf81" path="res://Pixel Adventure 1/Free/Background/Blue.png" id="2_modhf"]
@@ -6,11 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://b0da5j78o5o4r" path="res://scenes/characters/mainCharacter.tscn" id="4_cbks8"]
 [ext_resource type="PackedScene" uid="uid://c0akkuhnhuvmq" path="res://scenes/collectables/collectable.tscn" id="5_3dq3v"]
 [ext_resource type="PackedScene" uid="uid://doeqtpok6hoir" path="res://scenes/traps/spikes.tscn" id="6_e782k"]
-[ext_resource type="PackedScene" uid="uid://d3pvaayrqvfip" path="res://scenes/gameOver.tscn" id="7_lpmwn"]
 [ext_resource type="PackedScene" uid="uid://db0oyyiotsenp" path="res://scenes/trophy.tscn" id="8_ktd0n"]
 [ext_resource type="PackedScene" uid="uid://32mdwmfvy0vq" path="res://music/background.tscn" id="9_88wyi"]
 [ext_resource type="PackedScene" uid="uid://bjevibl8eaeot" path="res://scenes/enemies/bat.tscn" id="10_blpc0"]
-[ext_resource type="PackedScene" uid="uid://c1y0bxeua6ire" path="res://scenes/components/levelComplete.tscn" id="11_k1g2g"]
+[ext_resource type="PackedScene" uid="uid://lrtbmhbewluh" path="res://scenes/components/scoreManager.tscn" id="10_iqwsx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kw4ku"]
 texture = ExtResource("3_68ysw")
@@ -932,75 +931,6 @@ position = Vector2(1344, -512)
 [node name="background" parent="." instance=ExtResource("9_88wyi")]
 targetBackgroundPath = "res://music/hiTempo.wav"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-self_modulate = Color(1, 1, 1, 0)
-offset_left = 25.0
-offset_top = 16.0
-offset_right = 202.0
-offset_bottom = 91.0
-
-[node name="Panel" type="Panel" parent="CanvasLayer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Time" type="Label" parent="CanvasLayer/Panel"]
+[node name="scoreManager" parent="." instance=ExtResource("10_iqwsx")]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 36.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Time : 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -37.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Points : 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="gameOver" parent="CanvasLayer/Panel" instance=ExtResource("7_lpmwn")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 446.5
-offset_top = 221.5
-offset_right = 446.5
-offset_bottom = 221.5
-
-[node name="levelCompleted" parent="CanvasLayer/Panel" instance=ExtResource("11_k1g2g")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 446.5
-offset_top = 220.5
-offset_right = 446.5
-offset_bottom = 220.5
-nextLevelPath = "res://scenes/levels/level2.tscn"
+next_level_path = "res://scenes/levels/main_menu.tscn"

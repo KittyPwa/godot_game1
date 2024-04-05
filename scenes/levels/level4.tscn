@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgm7bojjehaxp"]
+[gd_scene load_steps=12 format=3 uid="uid://bgm7bojjehaxp"]
 
 [ext_resource type="PackedScene" uid="uid://drljy05vt1umx" path="res://scenes/game_manager.tscn" id="1_fh33x"]
 [ext_resource type="Texture2D" uid="uid://kekamxu4tf81" path="res://Pixel Adventure 1/Free/Background/Blue.png" id="2_8rg6w"]
@@ -6,9 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b0da5j78o5o4r" path="res://scenes/characters/mainCharacter.tscn" id="4_y7m84"]
 [ext_resource type="PackedScene" uid="uid://c0akkuhnhuvmq" path="res://scenes/collectables/collectable.tscn" id="5_4g6a5"]
 [ext_resource type="PackedScene" uid="uid://doeqtpok6hoir" path="res://scenes/traps/spikes.tscn" id="6_gqouh"]
-[ext_resource type="PackedScene" uid="uid://d3pvaayrqvfip" path="res://scenes/gameOver.tscn" id="7_dr68f"]
 [ext_resource type="PackedScene" uid="uid://db0oyyiotsenp" path="res://scenes/trophy.tscn" id="8_7rlws"]
-[ext_resource type="PackedScene" uid="uid://c1y0bxeua6ire" path="res://scenes/components/levelComplete.tscn" id="8_ba3gb"]
+[ext_resource type="PackedScene" uid="uid://lrtbmhbewluh" path="res://scenes/components/scoreManager.tscn" id="9_5xi12"]
 [ext_resource type="PackedScene" uid="uid://32mdwmfvy0vq" path="res://music/background.tscn" id="9_ljfgg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kw4ku"]
@@ -1098,79 +1097,6 @@ rotation = 1.5708
 position = Vector2(886, 409)
 rotation = 1.5708
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-self_modulate = Color(1, 1, 1, 0)
-offset_left = 25.0
-offset_top = 16.0
-offset_right = 202.0
-offset_bottom = 91.0
-
-[node name="Panel" type="Panel" parent="CanvasLayer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Time" type="Label" parent="CanvasLayer/Panel"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 36.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Time : 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -37.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Points : 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="gameOver" parent="CanvasLayer/Panel" instance=ExtResource("7_dr68f")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 446.5
-offset_top = 221.5
-offset_right = 446.5
-offset_bottom = 221.5
-
-[node name="levelCompleted" parent="CanvasLayer/Panel" instance=ExtResource("8_ba3gb")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 446.5
-offset_top = 220.5
-offset_right = 446.5
-offset_bottom = 220.5
-nextLevelPath = "res://scenes/levels/level2.tscn"
-
 [node name="trophy" parent="." instance=ExtResource("8_7rlws")]
 position = Vector2(2116, 81)
 
@@ -1249,3 +1175,7 @@ against the ceiling to
 reset your jumps!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="scoreManager" parent="." instance=ExtResource("9_5xi12")]
+unique_name_in_owner = true
+next_level_path = "res://scenes/levels/level5.tscn"

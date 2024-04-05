@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c0vlmss4a0bkf"]
+[gd_scene load_steps=16 format=3 uid="uid://c0vlmss4a0bkf"]
 
 [ext_resource type="PackedScene" uid="uid://drljy05vt1umx" path="res://scenes/game_manager.tscn" id="1_771k0"]
 [ext_resource type="Texture2D" uid="uid://ydbsmncg14mw" path="res://Green.png" id="2_65pvo"]
@@ -9,8 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bsmo8o4n0mlmn" path="res://scenes/enemies/duck.tscn" id="9_dweps"]
 [ext_resource type="Script" path="res://scenes/enemies.gd" id="9_g4t3b"]
 [ext_resource type="PackedScene" uid="uid://32mdwmfvy0vq" path="res://music/background.tscn" id="10_aedlo"]
-[ext_resource type="PackedScene" uid="uid://c1y0bxeua6ire" path="res://scenes/components/levelComplete.tscn" id="10_ftij4"]
-[ext_resource type="PackedScene" uid="uid://d3pvaayrqvfip" path="res://scenes/gameOver.tscn" id="10_w2ch3"]
+[ext_resource type="PackedScene" uid="uid://lrtbmhbewluh" path="res://scenes/components/scoreManager.tscn" id="11_t21hc"]
 [ext_resource type="PackedScene" uid="uid://dhwi3o6lgba4m" path="res://cielingHitParticles.tscn" id="11_xcrtg"]
 
 [sub_resource type="GDScript" id="GDScript_0msgx"]
@@ -835,79 +834,6 @@ script = ExtResource("9_g4t3b")
 [node name="duck" parent="SceneObjects/enemies" instance=ExtResource("9_dweps")]
 position = Vector2(1353, 491)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-self_modulate = Color(1, 1, 1, 0)
-offset_left = 25.0
-offset_top = 16.0
-offset_right = 202.0
-offset_bottom = 91.0
-
-[node name="Panel" type="Panel" parent="CanvasLayer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Time" type="Label" parent="CanvasLayer/Panel"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 36.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Time : 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -37.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Points : 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="gameOver" parent="CanvasLayer/Panel" instance=ExtResource("10_w2ch3")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 446.5
-offset_top = 221.5
-offset_right = 446.5
-offset_bottom = 221.5
-
-[node name="levelCompleted" parent="CanvasLayer/Panel" instance=ExtResource("10_ftij4")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 446.5
-offset_top = 220.5
-offset_right = 446.5
-offset_bottom = 220.5
-nextLevelPath = "res://scenes/levels/level2.tscn"
-
 [node name="background" parent="." instance=ExtResource("10_aedlo")]
 unique_name_in_owner = true
 
@@ -983,6 +909,10 @@ grow_vertical = 2
 text = "Beware of dangers"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="scoreManager" parent="." instance=ExtResource("11_t21hc")]
+unique_name_in_owner = true
+next_level_path = "res://scenes/levels/level2.tscn"
 
 [connection signal="mainCharacterIsDead" from="SceneObjects/enemies/duck2" to="SceneObjects/enemies" method="_on_duck_2_main_character_is_dead"]
 [connection signal="mainCharacterIsDead" from="SceneObjects/enemies/duck" to="SceneObjects/enemies" method="_on_duck_main_character_is_dead"]

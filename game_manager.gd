@@ -8,9 +8,8 @@ var ongoing = true;
 @onready var game_over_node = %gameOver
 @onready var main_character = %mainCharacter
 @onready var level_completed = %levelCompleted
+@onready var score_manager = %scoreManager
 
-@onready var label = %Label
-@onready var timeLabel = %Time
 
 func _ready():
 	SignalBus.connect("hit_main_character", hitMainCharacter)
@@ -22,14 +21,14 @@ func _ready():
 func _process(_delta):
 	if(ongoing):
 		time = Time.get_ticks_msec() - startTime
-		if timeLabel != null:
-			timeLabel.text = "Time : " + str(snappedf(float(time)/ 1000,0.01))
+		if score_manager != null:
+			score_manager.update_time(str(snappedf(float(time)/ 1000,0.01)))
 	
 func completeLevel():
 	ongoing = false
 	main_character.kill()
-	level_completed.visible = true
-	level_completed.updateScoreAndTimer(points, str(snappedf(float(time)/ 1000,0.01)))
+	score_manager.show_level_completed()
+	score_manager.update_level_completed(points,str(snappedf(float(time)/ 1000,0.01)))
 	
 
 func hitAndKill(node):
@@ -41,13 +40,13 @@ func updateLevel(level):
 
 func add_points():
 	points += 100
-	label.text = "Points : " + str(points)	
+	score_manager.update_score(str(points))
 
 func hitMainCharacter():
 	if(main_character.is_killable):
 		main_character.kill()
-		game_over_node.set_score(points)
-		game_over_node.visible = true
+		score_manager.show_game_over()
+		score_manager.set_game_over_score(points)
 		SignalBus.setMainCharacterDead()
 		ongoing = false
 

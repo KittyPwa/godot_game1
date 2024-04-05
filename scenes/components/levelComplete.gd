@@ -8,8 +8,9 @@ var time = 0
 @onready var timerLabel = %timer
 
 
-func _ready():
-	next_level.scenePath = nextLevelPath
+
+func updateScenePath(path):
+	next_level.scenePath = path
 
 func updateScoreAndTimer(score, time):
 	scoreLabel.text = "Score : " + str(score)

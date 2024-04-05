@@ -8,7 +8,6 @@ func _on_pressed():
 	if is_reset :
 		reset()
 	else :
-		print(scenePath)
 		SignalBus.call_deferred("set_level",scenePath)
 	
 func reset():	
