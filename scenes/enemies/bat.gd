@@ -3,9 +3,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = %AnimatedSprite2D
 @export var horizontal_move : bool
 @export var vertical_move : bool
-
-
-signal mainCharacterIsDead
+@export var is_killable : bool
 
 var animation_name = ""
 const SPEED = GlobalVars.constants.ennemies.bat.SPEED
@@ -32,6 +30,8 @@ func _ready():
 func _physics_process(delta):
 	
 	animation_name = "flying"
+	if !horizontal_move && !vertical_move:
+		animation_name = "idle"
 	animated_sprite_2d.animation = animation_name
 	if ray_cast_2d.is_colliding() or ray_cast_2d_2.is_colliding() or ray_cast_2d_3.is_colliding():			
 		if horizontal_move:
@@ -64,3 +64,6 @@ func flip_vertical():
 func _on_hit_box_area_entered(area):	
 	if area.get_parent().name == "mainCharacter":
 		SignalBus.hitMainCharacter()
+
+func kill():
+	queue_free()

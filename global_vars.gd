@@ -6,7 +6,10 @@ const constants = {
 		"INC_SPEED_X" = 60.0,	
 		"SLOW_DOWN" = 40.0,
 		"JUMP_VELOCITY" = -730.0,
-		"WALL_JUMP_EXTRA_VELOCITY" = -365.0
+		"WALL_JUMP_EXTRA_VELOCITY" = -365.0,
+		"DASH_SPEED" = 1500,
+		"DASH_ROTATION" = 45,
+		"DASH_SKEW" = 45,
 	},	
 	"ennemies" = {
 		"bat" =  {

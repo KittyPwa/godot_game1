@@ -348,7 +348,6 @@ height = 50.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_j0tvm")
-is_killable = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -356,7 +355,7 @@ texture_filter = 1
 position = Vector2(32, 32)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_0at4k")
-animation = &"dash"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -374,8 +373,6 @@ shape = SubResource("CapsuleShape2D_tay87")
 
 [node name="dashTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.15
-one_shot = true
 
 [node name="coyoteTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -412,6 +409,5 @@ bus = &"sfx"
 unique_name_in_owner = true
 position = Vector2(34, 19)
 
-[connection signal="area_entered" from="hitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="coyoteTimer" to="." method="_on_coyote_timer_timeout"]

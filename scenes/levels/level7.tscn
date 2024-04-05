@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://che4whe8i34kg"]
+[gd_scene load_steps=13 format=3 uid="uid://dbve146udqx6m"]
 
 [ext_resource type="PackedScene" uid="uid://drljy05vt1umx" path="res://scenes/game_manager.tscn" id="1_60ymt"]
 [ext_resource type="Texture2D" uid="uid://kekamxu4tf81" path="res://Pixel Adventure 1/Free/Background/Blue.png" id="2_modhf"]
@@ -844,7 +844,63 @@ position_smoothing_speed = 7.0
 [node name="Collectable17" parent="SceneObjects/Collectables" instance=ExtResource("5_3dq3v")]
 position = Vector2(-724, 795)
 
+[node name="Collectable" parent="SceneObjects/Collectables" instance=ExtResource("5_3dq3v")]
+position = Vector2(1025, 488)
+
+[node name="Collectable2" parent="SceneObjects/Collectables" instance=ExtResource("5_3dq3v")]
+position = Vector2(576, 342)
+
+[node name="Collectable3" parent="SceneObjects/Collectables" instance=ExtResource("5_3dq3v")]
+position = Vector2(205, 249)
+
+[node name="Collectable4" parent="SceneObjects/Collectables" instance=ExtResource("5_3dq3v")]
+position = Vector2(235, -139)
+
+[node name="Collectable5" parent="SceneObjects/Collectables" instance=ExtResource("5_3dq3v")]
+position = Vector2(368, -605)
+
+[node name="Collectable6" parent="SceneObjects/Collectables" instance=ExtResource("5_3dq3v")]
+position = Vector2(777, -249)
+
 [node name="enemies" type="Node" parent="SceneObjects"]
+
+[node name="bat" parent="SceneObjects/enemies" instance=ExtResource("10_blpc0")]
+position = Vector2(417, 225)
+horizontal_move = true
+
+[node name="bat2" parent="SceneObjects/enemies" instance=ExtResource("10_blpc0")]
+position = Vector2(1123, 465)
+horizontal_move = true
+
+[node name="bat3" parent="SceneObjects/enemies" instance=ExtResource("10_blpc0")]
+position = Vector2(447, -800)
+vertical_move = true
+
+[node name="bat4" parent="SceneObjects/enemies" instance=ExtResource("10_blpc0")]
+position = Vector2(746, 259)
+vertical_move = true
+
+[node name="bat5" parent="SceneObjects/enemies" instance=ExtResource("10_blpc0")]
+position = Vector2(302, -152)
+horizontal_move = true
+
+[node name="bat6" parent="SceneObjects/enemies" instance=ExtResource("10_blpc0")]
+position = Vector2(115, -660)
+vertical_move = true
+
+[node name="bat7" parent="SceneObjects/enemies" instance=ExtResource("10_blpc0")]
+position = Vector2(642, -586)
+horizontal_move = true
+
+[node name="bat8" parent="SceneObjects/enemies" instance=ExtResource("10_blpc0")]
+position = Vector2(591, -57)
+horizontal_move = true
+vertical_move = true
+
+[node name="bat9" parent="SceneObjects/enemies" instance=ExtResource("10_blpc0")]
+position = Vector2(612, -435)
+horizontal_move = true
+vertical_move = true
 
 [node name="spikeTraps" type="Node" parent="SceneObjects"]
 
@@ -918,59 +974,3 @@ offset_left = 437.5
 offset_top = 279.5
 offset_right = 437.5
 offset_bottom = 279.5
-
-[node name="bat" parent="." instance=ExtResource("10_blpc0")]
-position = Vector2(417, 225)
-horizontal_move = true
-
-[node name="bat2" parent="." instance=ExtResource("10_blpc0")]
-position = Vector2(1123, 465)
-horizontal_move = true
-
-[node name="bat3" parent="." instance=ExtResource("10_blpc0")]
-position = Vector2(447, -800)
-vertical_move = true
-
-[node name="bat4" parent="." instance=ExtResource("10_blpc0")]
-position = Vector2(746, 259)
-vertical_move = true
-
-[node name="bat5" parent="." instance=ExtResource("10_blpc0")]
-position = Vector2(302, -152)
-horizontal_move = true
-
-[node name="bat6" parent="." instance=ExtResource("10_blpc0")]
-position = Vector2(115, -660)
-vertical_move = true
-
-[node name="bat7" parent="." instance=ExtResource("10_blpc0")]
-position = Vector2(642, -586)
-horizontal_move = true
-
-[node name="bat8" parent="." instance=ExtResource("10_blpc0")]
-position = Vector2(591, -57)
-horizontal_move = true
-vertical_move = true
-
-[node name="bat9" parent="." instance=ExtResource("10_blpc0")]
-position = Vector2(612, -435)
-horizontal_move = true
-vertical_move = true
-
-[node name="Collectable" parent="." instance=ExtResource("5_3dq3v")]
-position = Vector2(1025, 488)
-
-[node name="Collectable2" parent="." instance=ExtResource("5_3dq3v")]
-position = Vector2(576, 342)
-
-[node name="Collectable3" parent="." instance=ExtResource("5_3dq3v")]
-position = Vector2(205, 249)
-
-[node name="Collectable4" parent="." instance=ExtResource("5_3dq3v")]
-position = Vector2(235, -139)
-
-[node name="Collectable5" parent="." instance=ExtResource("5_3dq3v")]
-position = Vector2(368, -605)
-
-[node name="Collectable6" parent="." instance=ExtResource("5_3dq3v")]
-position = Vector2(777, -249)
