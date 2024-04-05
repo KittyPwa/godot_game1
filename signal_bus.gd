@@ -4,9 +4,13 @@ signal hit_main_character
 signal setLevel
 signal resetMusic
 signal hit_and_kill
+signal completeLevel
 
 var currentLevel = ''
 var main_character_is_dead = false
+
+func complete_level():
+	completeLevel.emit()
 
 func hit(node):
 	if node.name == "mainCharacter":

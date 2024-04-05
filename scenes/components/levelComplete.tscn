@@ -1,0 +1,125 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1y0bxeua6ire"]
+
+[ext_resource type="Script" path="res://scenes/components/levelComplete.gd" id="1_1rcuk"]
+[ext_resource type="Texture2D" uid="uid://dkrxo8lmlchsr" path="res://Pixel Adventure 1/Free/Other/levelComplete.png" id="2_hbnkc"]
+[ext_resource type="PackedScene" uid="uid://c6nguo3c23jfp" path="res://scenes/components/SceneButton.tscn" id="3_vo2ft"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iyqm7"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1rcuk")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0.905882, 0.905882, 0.960784, 1)
+self_modulate = Color(0.313726, 0.54902, 0.780392, 0.988235)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -103.0
+offset_right = 202.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iyqm7")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+offset_right = 500.0
+offset_bottom = 96.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_hbnkc")
+
+[node name="score" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = -11.0
+offset_right = -34.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Score : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="retry" parent="Panel" instance=ExtResource("3_vo2ft")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 148.0
+offset_top = 164.0
+offset_right = 257.0
+offset_bottom = 195.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Retry"
+is_reset = true
+
+[node name="timer" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 37.0
+offset_top = -10.0
+offset_right = 146.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Time : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mainMenu" parent="Panel" instance=ExtResource("3_vo2ft")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 22.0
+offset_top = 164.0
+offset_right = 131.0
+offset_bottom = 195.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Main Menu"
+scenePath = "res://scenes/levels/main_menu.tscn"
+
+[node name="NextLevel" parent="Panel" instance=ExtResource("3_vo2ft")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 274.0
+offset_top = 164.0
+offset_right = 383.0
+offset_bottom = 195.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Next Level"

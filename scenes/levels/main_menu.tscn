@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c160vou2ejchm"]
 
 [ext_resource type="Texture2D" uid="uid://ydbsmncg14mw" path="res://Green.png" id="1_rpqjc"]
-[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_w67so"]
+[ext_resource type="Script" path="res://scenes/levels/main_menu.gd" id="1_w67so"]
 [ext_resource type="Texture2D" uid="uid://dm32egfg8hqb" path="res://jump.png" id="2_2ckti"]
 [ext_resource type="PackedScene" uid="uid://drljy05vt1umx" path="res://scenes/game_manager.tscn" id="2_nlerq"]
 [ext_resource type="PackedScene" uid="uid://32mdwmfvy0vq" path="res://music/background.tscn" id="5_726f2"]

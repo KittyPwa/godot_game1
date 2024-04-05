@@ -17,6 +17,8 @@ var was_on_floor = false
 var wall_jumped = false
 var is_dashing = false
 var dash_counter = 1
+var just_dashed = false;
+var last_delta
 
 @onready var coyote_timer = %coyoteTimer
 @onready var dash_timer = %dashTimer
@@ -30,6 +32,9 @@ var dash_counter = 1
 @onready var cieiling_hit = %cieilingHit
 @onready var ceiling_hit_particels = %ceilingHitParticels
 @export var is_killable : bool
+@export var can_double_jump : bool
+@export var can_wall_jump : bool
+@export var can_dash : bool
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -39,7 +44,6 @@ func kill():
 	can_move = false
 
 func manage_animations():
-	var upsideDown = false
 	if(velocity.x != 0):
 			animation_name = "running"
 	else:
@@ -70,28 +74,31 @@ func manage_x_movement():
 		velocity_x = move_toward(velocity.x, 0, SLOW_DOWN)
 	if is_dashing:
 		if !dashing_up && direction_x == 0:
-			print('not dashing up')
 			direction_x = 1
-		velocity_x = DASH_SPEED * direction_x
-		print(velocity_x)
-		#skew_and_rotate(DASH_SKEW,DASH_ROTATION, direction_x)
+		velocity_x = DASH_SPEED * direction_x		
 	velocity.x = velocity_x
+
+func touch_floor():
+	jump_amount = 1
+	wall_jumped = false	
+	
+func touch_ceiling():
+	wall_jumped = false
+	jump_amount = 1
+	cieiling_hit.play()
+	ceiling_hit_particels.emit()
 
 func manage_y_movement(delta):
 	var velocity_y = velocity.y
 	if not is_on_floor():
 		velocity_y += gravity * delta	
 	else:
-		jump_amount = 1
-		wall_jumped = false		
+		touch_floor()
 		
 	if was_on_floor and !is_on_floor():
 		coyote_timer.start()
 	if is_on_ceiling():
-		wall_jumped = false
-		jump_amount = 1
-		cieiling_hit.play()
-		ceiling_hit_particels.emit()
+		touch_ceiling()
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
 		var do_jump = false
@@ -100,13 +107,13 @@ func manage_y_movement(delta):
 			do_jump = true
 			jump_amount = 1
 			jump_sound.play()
-		elif is_on_wall_only() && !wall_jumped:
+		elif can_wall_jump && (is_on_wall_only() && !wall_jumped):
 			extra_jump_power = WALL_JUMP_EXTRA_VELOCITY
 			do_jump = true				
 			wall_jumped = true
 			jump_amount = 1
 			wall_jump.play()
-		elif jump_amount == 1:
+		elif can_double_jump && jump_amount == 1:
 			do_jump = true				
 			jump_amount = 2
 			double_jump_sound.play()
@@ -115,15 +122,22 @@ func manage_y_movement(delta):
 	if is_dashing:
 		if !dashing_up:
 			velocity_y = velocity.y
-		if Input.is_action_pressed("aim_up") && !dashing_up:
-			dashing_up = true
-			velocity_y = DASH_SPEED * -1
+		else :
+			if just_dashed :
+				velocity_y = DASH_SPEED * -1
+			else : 
+				velocity_y += gravity * delta					
 	velocity.y = velocity_y
 func _physics_process(delta):
+	last_delta = delta
 	if(can_move):	
-		if Input.is_action_just_pressed("dash") && dash_counter > 0 && dash_timer.is_stopped():
+		just_dashed = false
+		if can_dash && (Input.is_action_just_pressed("dash") && dash_counter > 0 && dash_timer.is_stopped()):
+			if Input.is_action_pressed("aim_up"):
+				dashing_up = true
+			just_dashed = true
 			is_dashing = true
-			#dash_counter -= 1
+			dash_counter -= 1
 			self.is_killable = false
 			dash_timer.start()
 		manage_animations()
@@ -137,17 +151,16 @@ func _physics_process(delta):
 		var is_left = velocity.x < 0
 		sprite_2d.flip_h = is_left
 
-func skew_and_rotate(skew, rotation, direction):
-	sprite_2d.skew = skew
-	sprite_2d.rotation = rotation * direction
-
 func _on_dash_timer_timeout():
 	is_dashing = false
 	self.is_killable = true
 	dashing_up = false
-	#skew_and_rotate(0,0,0)
+	manage_y_movement(last_delta)
+	manage_x_movement()
+	touch_floor()
 
 func _on_hit_box_area_entered(area):	
 	var parent = area.get_parent()
 	if !is_killable && "is_killable" in parent:
+		dash_counter += 2
 		SignalBus.hit(parent)

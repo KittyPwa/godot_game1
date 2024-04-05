@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbve146udqx6m"]
+[gd_scene load_steps=14 format=3 uid="uid://che4whe8i34kg"]
 
 [ext_resource type="PackedScene" uid="uid://drljy05vt1umx" path="res://scenes/game_manager.tscn" id="1_60ymt"]
 [ext_resource type="Texture2D" uid="uid://kekamxu4tf81" path="res://Pixel Adventure 1/Free/Background/Blue.png" id="2_modhf"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://db0oyyiotsenp" path="res://scenes/trophy.tscn" id="8_ktd0n"]
 [ext_resource type="PackedScene" uid="uid://32mdwmfvy0vq" path="res://music/background.tscn" id="9_88wyi"]
 [ext_resource type="PackedScene" uid="uid://bjevibl8eaeot" path="res://scenes/enemies/bat.tscn" id="10_blpc0"]
+[ext_resource type="PackedScene" uid="uid://c1y0bxeua6ire" path="res://scenes/components/levelComplete.tscn" id="11_k1g2g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kw4ku"]
 texture = ExtResource("3_68ysw")
@@ -927,7 +928,6 @@ rotation = 3.14159
 
 [node name="trophy" parent="." instance=ExtResource("8_ktd0n")]
 position = Vector2(1344, -512)
-targetLevelName = "res://scenes/main_menu.tscn"
 
 [node name="background" parent="." instance=ExtResource("9_88wyi")]
 targetBackgroundPath = "res://music/hiTempo.wav"
@@ -949,12 +949,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Time" type="Label" parent="CanvasLayer/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Time : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Label" type="Label" parent="CanvasLayer/Panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Points : 0"
@@ -970,7 +985,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 437.5
-offset_top = 279.5
-offset_right = 437.5
-offset_bottom = 279.5
+offset_left = 446.5
+offset_top = 221.5
+offset_right = 446.5
+offset_bottom = 221.5
+
+[node name="levelCompleted" parent="CanvasLayer/Panel" instance=ExtResource("11_k1g2g")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 446.5
+offset_top = 220.5
+offset_right = 446.5
+offset_bottom = 220.5
+nextLevelPath = "res://scenes/levels/level2.tscn"
