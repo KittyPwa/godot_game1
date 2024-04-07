@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c160vou2ejchm"]
+[gd_scene load_steps=8 format=3 uid="uid://dgxaafypuv3pi"]
 
 [ext_resource type="Texture2D" uid="uid://ydbsmncg14mw" path="res://Green.png" id="1_rpqjc"]
 [ext_resource type="Script" path="res://scenes/levels/main_menu.gd" id="1_w67so"]
@@ -95,9 +95,9 @@ scenePath = "res://scenes/levels/level6.tscn"
 
 [node name="Level5" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
 layout_mode = 1
-offset_left = -67.0
+offset_left = -68.0
 offset_top = 91.561
-offset_right = 42.0
+offset_right = 41.0
 offset_bottom = 114.993
 theme_override_font_sizes/font_size = 30
 text = "Level 5"
@@ -112,6 +112,16 @@ offset_bottom = 28.993
 theme_override_font_sizes/font_size = 30
 text = "Level 7"
 scenePath = "res://scenes/levels/level7.tscn"
+
+[node name="Level8" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
+layout_mode = 1
+offset_left = 149.0
+offset_top = 91.561
+offset_right = 258.0
+offset_bottom = 114.993
+theme_override_font_sizes/font_size = 30
+text = "Level 8"
+scenePath = "res://scenes/levels/level8.tscn"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 unique_name_in_owner = true

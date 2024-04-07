@@ -86,6 +86,8 @@ func touch_ceiling():
 	wall_jumped = false
 	jump_amount = 1
 	cieiling_hit.play()
+	if ceiling_hit_particels.emitting:
+		ceiling_hit_particels.restart()
 	ceiling_hit_particels.emit()
 
 func manage_y_movement(delta):
@@ -128,18 +130,22 @@ func manage_y_movement(delta):
 			else : 
 				velocity_y += gravity * delta					
 	velocity.y = velocity_y
+	
+func dash_management():
+	if can_dash && (Input.is_action_just_pressed("dash") && dash_counter > 0 && dash_timer.is_stopped()):
+		if Input.is_action_pressed("aim_up"):
+			dashing_up = true
+		just_dashed = true
+		is_dashing = true
+		dash_counter -= 1
+		self.is_killable = false
+		dash_timer.start()
+
 func _physics_process(delta):
 	last_delta = delta
 	if(can_move):	
 		just_dashed = false
-		if can_dash && (Input.is_action_just_pressed("dash") && dash_counter > 0 && dash_timer.is_stopped()):
-			if Input.is_action_pressed("aim_up"):
-				dashing_up = true
-			just_dashed = true
-			is_dashing = true
-			dash_counter -= 1
-			self.is_killable = false
-			dash_timer.start()
+		dash_management()
 		manage_animations()
 		manage_y_movement(delta)	
 		manage_x_movement()

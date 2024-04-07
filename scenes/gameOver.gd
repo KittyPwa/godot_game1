@@ -23,5 +23,5 @@ func _on_button_1_pressed():
 
 
 func _on_button_2_pressed():
-	SignalBus.call_deferred("set_level","res://scenes/main_menu.tscn")
+	SignalBus.call_deferred("set_level","res://scenes/levels/main_menu.tscn")
 
