@@ -27,7 +27,7 @@ func _ready():
 	actual_speed_v = SPEED * -1
 	actual_speed_h = SPEED
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	animation_name = "flying"
 	if !horizontal_move && !vertical_move:

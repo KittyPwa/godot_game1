@@ -843,7 +843,7 @@ position_smoothing_speed = 7.0
 [node name="Collectables" type="Node" parent="SceneObjects"]
 
 [node name="Collectable17" parent="SceneObjects/Collectables" instance=ExtResource("5_jnloc")]
-position = Vector2(-724, 795)
+position = Vector2(-1164, 1370)
 
 [node name="Collectable18" parent="SceneObjects/Collectables" instance=ExtResource("5_jnloc")]
 position = Vector2(46, 123)
@@ -996,52 +996,52 @@ horizontal_move = true
 [node name="spikeTraps" type="Node" parent="SceneObjects"]
 
 [node name="spike5" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
-position = Vector2(-810, 883)
+position = Vector2(-1250, 1458)
 
 [node name="spike6" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
-position = Vector2(-759, 883)
+position = Vector2(-1199, 1458)
 
 [node name="spike7" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
-position = Vector2(-711, 883)
+position = Vector2(-1151, 1458)
 
 [node name="spike14" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
-position = Vector2(-632, 891)
+position = Vector2(-1072, 1466)
 rotation = -1.5708
 
 [node name="spike29" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
-position = Vector2(-867, 892)
+position = Vector2(-1307, 1467)
 rotation = 1.5708
 
 [node name="spike31" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
-position = Vector2(-557, 899)
+position = Vector2(-997, 1474)
 rotation = 3.14159
 
 [node name="spike15" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
-position = Vector2(-632, 849)
+position = Vector2(-1072, 1424)
 rotation = -1.5708
 
 [node name="spike16" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
-position = Vector2(-632, 808)
+position = Vector2(-1072, 1383)
 rotation = -1.5708
 
 [node name="spike17" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
-position = Vector2(-632, 766)
+position = Vector2(-1072, 1341)
 rotation = -1.5708
 
 [node name="spike18" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
-position = Vector2(-632, 725)
+position = Vector2(-1072, 1300)
 rotation = -1.5708
 
 [node name="spike19" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
-position = Vector2(-632, 683)
+position = Vector2(-1072, 1258)
 rotation = -1.5708
 
 [node name="spike20" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
-position = Vector2(-632, 642)
+position = Vector2(-1072, 1217)
 rotation = -1.5708
 
 [node name="spike21" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
-position = Vector2(-632, 600)
+position = Vector2(-1072, 1175)
 rotation = -1.5708
 
 [node name="spike22" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
@@ -1133,7 +1133,7 @@ position = Vector2(1150, 199)
 rotation = -1.5708
 
 [node name="spike40" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]
-position = Vector2(-543, 741)
+position = Vector2(-983, 1316)
 rotation = 1.5708
 
 [node name="spike41" parent="SceneObjects/spikeTraps" instance=ExtResource("7_ckn0m")]

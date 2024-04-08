@@ -1,7 +1,5 @@
 extends Node
 
-var time = 0
-
 @export var nextLevelPath : String
 @onready var next_level = %NextLevel
 @onready var scoreLabel = %score

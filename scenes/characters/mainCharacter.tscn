@@ -385,6 +385,11 @@ unique_name_in_owner = true
 wait_time = 0.15
 one_shot = true
 
+[node name="frozenTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
 [node name="sounds" type="Node" parent="."]
 
 [node name="jumpSound" type="AudioStreamPlayer" parent="sounds"]
@@ -418,3 +423,4 @@ position = Vector2(34, 19)
 [connection signal="area_entered" from="hitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="coyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="frozenTimer" to="." method="_on_frozen_timer_timeout"]

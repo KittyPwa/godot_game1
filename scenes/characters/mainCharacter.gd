@@ -19,9 +19,11 @@ var is_dashing = false
 var dash_counter = 1
 var just_dashed = false;
 var last_delta
+var is_frozen = false
 
 @onready var coyote_timer = %coyoteTimer
 @onready var dash_timer = %dashTimer
+@onready var frozen_timer = %frozenTimer
 
 
 @onready var sprite_2d = $Sprite2D
@@ -65,21 +67,23 @@ func manage_animations():
 func manage_x_movement():
 	var direction_x = Input.get_axis("left", "right")
 	var velocity_x = 0
-	if direction_x:
+	if direction_x && !is_dashing:
 		if is_on_floor():
 			velocity_x = MAX_SPEED_X * direction_x if abs(velocity.x) > MAX_SPEED_X else velocity.x + direction_x * INC_SPEED_X
 		else:
 			velocity_x = MAX_SPEED_X * direction_x
 	else:
 		velocity_x = move_toward(velocity.x, 0, SLOW_DOWN)
-	if is_dashing:
+	if just_dashed:
 		if !dashing_up && direction_x == 0:
 			direction_x = 1
-		velocity_x = DASH_SPEED * direction_x		
+		velocity_x = DASH_SPEED * direction_x	
+	if is_frozen:
+		velocity_x = 0
 	velocity.x = velocity_x
 
 func touch_floor():
-	jump_amount = 1
+	jump_amount = 0
 	wall_jumped = false	
 	
 func touch_ceiling():
@@ -105,7 +109,7 @@ func manage_y_movement(delta):
 	if Input.is_action_just_pressed("jump"):
 		var do_jump = false
 		var extra_jump_power = 0
-		if is_on_floor() or !coyote_timer.is_stopped():
+		if (is_on_floor() or !coyote_timer.is_stopped()) && jump_amount == 0:
 			do_jump = true
 			jump_amount = 1
 			jump_sound.play()
@@ -128,16 +132,19 @@ func manage_y_movement(delta):
 			if just_dashed :
 				velocity_y = DASH_SPEED * -1
 			else : 
-				velocity_y += gravity * delta					
+				velocity_y += gravity * delta	
+	if is_frozen:
+		velocity_y = 0				
 	velocity.y = velocity_y
 	
 func dash_management():
 	if can_dash && (Input.is_action_just_pressed("dash") && dash_counter > 0 && dash_timer.is_stopped()):
+		unfreeze()
 		if Input.is_action_pressed("aim_up"):
 			dashing_up = true
 		just_dashed = true
 		is_dashing = true
-		dash_counter -= 1
+		#dash_counter -= 1
 		self.is_killable = false
 		dash_timer.start()
 
@@ -164,9 +171,28 @@ func _on_dash_timer_timeout():
 	manage_y_movement(last_delta)
 	manage_x_movement()
 	touch_floor()
+	if !is_on_floor():
+		freeze()
+	
 
 func _on_hit_box_area_entered(area):	
 	var parent = area.get_parent()
 	if !is_killable && "is_killable" in parent:
 		dash_counter += 2
 		SignalBus.hit(parent)
+		is_frozen = true
+		freeze()
+
+func freeze():
+	is_frozen = true
+	if !frozen_timer.is_stopped():
+		frozen_timer.stop()
+	frozen_timer.start()
+
+func unfreeze():
+	is_frozen = false
+	if !frozen_timer.is_stopped():
+		frozen_timer.stop()
+
+func _on_frozen_timer_timeout():
+	unfreeze()

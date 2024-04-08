@@ -5,9 +5,7 @@ var time = 0
 var startTime = 0
 var ongoing = true;
 
-@onready var game_over_node = %gameOver
 @onready var main_character = %mainCharacter
-@onready var level_completed = %levelCompleted
 @onready var score_manager = %scoreManager
 
 

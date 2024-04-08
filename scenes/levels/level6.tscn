@@ -883,20 +883,20 @@ position = Vector2(447, -745)
 [node name="spikeTraps" type="Node" parent="SceneObjects"]
 
 [node name="spike5" parent="SceneObjects/spikeTraps" instance=ExtResource("6_pk4uw")]
-position = Vector2(-810, 883)
+position = Vector2(-1454, -109)
 
 [node name="spike6" parent="SceneObjects/spikeTraps" instance=ExtResource("6_pk4uw")]
-position = Vector2(-759, 883)
+position = Vector2(-1403, -109)
 
 [node name="spike7" parent="SceneObjects/spikeTraps" instance=ExtResource("6_pk4uw")]
-position = Vector2(-711, 883)
+position = Vector2(-1355, -109)
 
 [node name="spike14" parent="SceneObjects/spikeTraps" instance=ExtResource("6_pk4uw")]
-position = Vector2(-632, 891)
+position = Vector2(-1276, -101)
 rotation = -1.5708
 
 [node name="spike29" parent="SceneObjects/spikeTraps" instance=ExtResource("6_pk4uw")]
-position = Vector2(-867, 892)
+position = Vector2(-1511, -100)
 rotation = 1.5708
 
 [node name="spike8" parent="SceneObjects/spikeTraps" instance=ExtResource("6_pk4uw")]
