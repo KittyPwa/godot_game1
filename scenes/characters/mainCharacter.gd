@@ -73,9 +73,11 @@ func manage_x_movement():
 		else:
 			velocity_x = MAX_SPEED_X * direction_x
 	else:
-		velocity_x = move_toward(velocity.x, 0, SLOW_DOWN)
-	if just_dashed:
-		if !dashing_up && direction_x == 0:
+		velocity_x = velocity_x if abs(velocity_x) > MAX_SPEED_X else MAX_SPEED_X * direction_x
+		velocity_x = move_toward(velocity_x, 0, SLOW_DOWN)
+	if is_dashing:
+		var direction_y = Input.get_axis("aim_up", "crouch")
+		if !direction_y && direction_x == 0:
 			direction_x = 1
 		velocity_x = DASH_SPEED * direction_x	
 	if is_frozen:
@@ -100,7 +102,6 @@ func manage_y_movement(delta):
 		velocity_y += gravity * delta	
 	else:
 		touch_floor()
-		
 	if was_on_floor and !is_on_floor():
 		coyote_timer.start()
 	if is_on_ceiling():
@@ -125,14 +126,14 @@ func manage_y_movement(delta):
 			double_jump_sound.play()
 		if do_jump:
 			velocity_y = JUMP_VELOCITY + extra_jump_power
+	var direction_y = Input.get_axis("aim_up", "crouch")
+	
 	if is_dashing:
-		if !dashing_up:
-			velocity_y = velocity.y
+		if !direction_y:
+			velocity_y = 0
 		else :
 			if just_dashed :
-				velocity_y = DASH_SPEED * -1
-			else : 
-				velocity_y += gravity * delta	
+				velocity_y = DASH_SPEED * direction_y
 	if is_frozen:
 		velocity_y = 0				
 	velocity.y = velocity_y

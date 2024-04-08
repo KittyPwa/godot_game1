@@ -842,7 +842,7 @@ position_smoothing_speed = 7.0
 [node name="Collectables" type="Node" parent="SceneObjects"]
 
 [node name="Collectable17" parent="SceneObjects/Collectables" instance=ExtResource("5_3dq3v")]
-position = Vector2(-724, 795)
+position = Vector2(-1301, 1244)
 
 [node name="Collectable" parent="SceneObjects/Collectables" instance=ExtResource("5_3dq3v")]
 position = Vector2(1025, 488)
@@ -905,24 +905,24 @@ vertical_move = true
 [node name="spikeTraps" type="Node" parent="SceneObjects"]
 
 [node name="spike5" parent="SceneObjects/spikeTraps" instance=ExtResource("6_e782k")]
-position = Vector2(-810, 883)
+position = Vector2(-1387, 1332)
 
 [node name="spike6" parent="SceneObjects/spikeTraps" instance=ExtResource("6_e782k")]
-position = Vector2(-759, 883)
+position = Vector2(-1336, 1332)
 
 [node name="spike7" parent="SceneObjects/spikeTraps" instance=ExtResource("6_e782k")]
-position = Vector2(-711, 883)
+position = Vector2(-1288, 1332)
 
 [node name="spike14" parent="SceneObjects/spikeTraps" instance=ExtResource("6_e782k")]
-position = Vector2(-632, 891)
+position = Vector2(-1209, 1340)
 rotation = -1.5708
 
 [node name="spike29" parent="SceneObjects/spikeTraps" instance=ExtResource("6_e782k")]
-position = Vector2(-867, 892)
+position = Vector2(-1444, 1341)
 rotation = 1.5708
 
 [node name="spike31" parent="SceneObjects/spikeTraps" instance=ExtResource("6_e782k")]
-position = Vector2(-557, 899)
+position = Vector2(-1134, 1348)
 rotation = 3.14159
 
 [node name="trophy" parent="." instance=ExtResource("8_ktd0n")]
