@@ -46,5 +46,5 @@ func flip():
 
 
 func _on_hit_box_area_entered(area):	
-	if area.get_parent().name == "mainCharacter":
+	if area.name == "hitBox" && area.get_parent().name == "mainCharacter":
 		SignalBus.hitMainCharacter()

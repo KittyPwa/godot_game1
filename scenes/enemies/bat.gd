@@ -62,7 +62,7 @@ func flip_vertical():
 	ray_cast_2d_6.target_position.y = ray_cast_2d_6.target_position.y * -1
 
 func _on_hit_box_area_entered(area):	
-	if area.get_parent().name == "mainCharacter":
+	if area.name == "hitBox" && area.get_parent().name == "mainCharacter":
 		SignalBus.hitMainCharacter()
 
 func kill():

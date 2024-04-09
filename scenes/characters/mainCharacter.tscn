@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b0da5j78o5o4r"]
+[gd_scene load_steps=57 format=3 uid="uid://b0da5j78o5o4r"]
 
 [ext_resource type="Script" path="res://scenes/characters/mainCharacter.gd" id="1_j0tvm"]
 [ext_resource type="Texture2D" uid="uid://brs4x2mbjrlnd" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Jump (32x32).png" id="1_rfhud"]
@@ -343,8 +343,12 @@ animations = [{
 size = Vector2(45, 56)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tay87"]
-radius = 54.0
-height = 108.0
+radius = 20.0
+height = 56.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_58bof"]
+radius = 48.0
+height = 96.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_j0tvm")
@@ -372,7 +376,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
-position = Vector2(32, 40)
+position = Vector2(33, 32)
 shape = SubResource("CapsuleShape2D_tay87")
 
 [node name="dashTimer" type="Timer" parent="."]
@@ -424,8 +428,8 @@ position = Vector2(34, 19)
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dashHitbox"]
-position = Vector2(32, 33)
-shape = SubResource("CapsuleShape2D_tay87")
+position = Vector2(32, 29)
+shape = SubResource("CapsuleShape2D_58bof")
 
 [connection signal="area_entered" from="hitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]

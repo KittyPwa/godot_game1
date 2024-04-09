@@ -38,6 +38,7 @@ var is_frozen = false
 @export var can_double_jump : bool
 @export var can_wall_jump : bool
 @export var can_dash : bool
+var ignore_y_freeze = false
 signal dashed
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -77,28 +78,33 @@ func manage_x_movement():
 		else:
 			velocity_x = MAX_SPEED_X * direction_x
 	else:
-		velocity_x = velocity_x if abs(velocity_x) > MAX_SPEED_X else MAX_SPEED_X * direction_x
+		velocity_x = MAX_SPEED_X * direction_x if abs(velocity_x) > MAX_SPEED_X else velocity_x
 		velocity_x = move_toward(velocity_x, 0, SLOW_DOWN)
 	if is_dashing:
 		var direction_y = Input.get_axis("aim_up", "crouch")
 		if !direction_y && direction_x == 0:
 			direction_x = 1
 		velocity_x = DASH_SPEED * direction_x	
-	if is_frozen:
+	if is_frozen && !ignore_y_freeze:
 		velocity_x = 0
+	#print(velocity_x)
 	velocity.x = velocity_x
 
 func touch_floor():
 	jump_amount = 0
 	wall_jumped = false	
 	
-func touch_ceiling():
+func ceiling_jump_resets():
 	wall_jumped = false
 	jump_amount = 1
+
+func touch_ceiling():
+	ceiling_jump_resets()
 	cieiling_hit.play()
 	if ceiling_hit_particels.emitting:
 		ceiling_hit_particels.restart()
-	ceiling_hit_particels.emit()
+	else:
+		ceiling_hit_particels.emit()
 
 func manage_y_movement(delta):
 	var velocity_y = velocity.y
@@ -106,6 +112,7 @@ func manage_y_movement(delta):
 		velocity_y += gravity * delta	
 	else:
 		touch_floor()
+	
 	if was_on_floor and !is_on_floor():
 		coyote_timer.start()
 	if is_on_ceiling():
@@ -113,6 +120,9 @@ func manage_y_movement(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
 		var do_jump = false
+		if is_frozen:
+			ignore_y_freeze = true
+			
 		var extra_jump_power = 0
 		if (is_on_floor() or !coyote_timer.is_stopped()) && jump_amount == 0:
 			do_jump = true
@@ -138,8 +148,8 @@ func manage_y_movement(delta):
 		else :
 			if just_dashed :
 				velocity_y = DASH_SPEED * direction_y
-	if is_frozen:
-		velocity_y = 0				
+	if is_frozen && (!ignore_y_freeze):
+		velocity_y = 0		
 	velocity.y = velocity_y
 	
 func dash_management():
@@ -149,7 +159,9 @@ func dash_management():
 			dashing_up = true
 		just_dashed = true
 		is_dashing = true
-		updateDashes(-1)
+		ignore_y_freeze = false
+		#updateDashes(-1)
+		ceiling_jump_resets()
 		dashed.emit(dash_counter)
 		self.is_killable = false
 		dash_timer.start()
@@ -180,7 +192,6 @@ func _on_dash_timer_timeout():
 	dashing_up = false
 	manage_y_movement(last_delta)
 	manage_x_movement()
-	touch_floor()
 	if !is_on_floor():
 		freeze()
 	

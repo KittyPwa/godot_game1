@@ -14,7 +14,8 @@ func _ready():
 	SignalBus.connect("setLevel", updateLevel)
 	SignalBus.connect("hit_and_kill", hitAndKill)
 	SignalBus.connect("completeLevel", completeLevel)
-	main_character.connect("dashed", update_dash)
+	if main_character:
+		main_character.connect("dashed", update_dash)
 	startTime = Time.get_ticks_msec()
 	
 func _process(_delta):
