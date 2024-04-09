@@ -14,13 +14,15 @@ func _ready():
 	SignalBus.connect("setLevel", updateLevel)
 	SignalBus.connect("hit_and_kill", hitAndKill)
 	SignalBus.connect("completeLevel", completeLevel)
+	main_character.connect("dashed", update_dash)
 	startTime = Time.get_ticks_msec()
 	
 func _process(_delta):
 	if(ongoing):
 		time = Time.get_ticks_msec() - startTime
 		if score_manager != null:
-			score_manager.update_time(str(snappedf(float(time)/ 1000,0.01)))
+			score_manager.update_time(str(snappedf(float(time)/ 1000,0.01)))		
+		
 	
 func completeLevel():
 	ongoing = false
@@ -35,6 +37,9 @@ func hitAndKill(node):
 
 func updateLevel(level):
 	get_tree().change_scene_to_file(level)
+
+func update_dash(dashAmount):
+	score_manager.update_dashes(str(dashAmount))
 
 func add_points():
 	points += 100

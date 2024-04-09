@@ -16,7 +16,7 @@ var animation_name = ""
 var was_on_floor = false
 var wall_jumped = false
 var is_dashing = false
-var dash_counter = 1
+var dash_counter = 0
 var just_dashed = false;
 var last_delta
 var is_frozen = false
@@ -27,6 +27,7 @@ var is_frozen = false
 
 
 @onready var sprite_2d = $Sprite2D
+@onready var dash_hitbox = %dashHitbox
 
 @onready var jump_sound = %jumpSound
 @onready var double_jump_sound = %doubleJumpSound
@@ -37,10 +38,13 @@ var is_frozen = false
 @export var can_double_jump : bool
 @export var can_wall_jump : bool
 @export var can_dash : bool
-
+signal dashed
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+func _ready():
+	call_deferred("updateDashes",1)
 
 func kill():
 	can_move = false
@@ -145,9 +149,14 @@ func dash_management():
 			dashing_up = true
 		just_dashed = true
 		is_dashing = true
-		#dash_counter -= 1
+		updateDashes(-1)
+		dashed.emit(dash_counter)
 		self.is_killable = false
 		dash_timer.start()
+
+func updateDashes(dashAmount):
+	dash_counter += dashAmount
+	dashed.emit(dashAmount)
 
 func _physics_process(delta):
 	last_delta = delta
@@ -176,13 +185,12 @@ func _on_dash_timer_timeout():
 		freeze()
 	
 
-func _on_hit_box_area_entered(area):	
+func _on_dash_hitbox_area_entered(area):	
 	var parent = area.get_parent()
 	if !is_killable && "is_killable" in parent:
-		dash_counter += 2
+		updateDashes(2)
 		SignalBus.hit(parent)
-		is_frozen = true
-		freeze()
+		
 
 func freeze():
 	is_frozen = true

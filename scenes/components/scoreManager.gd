@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var time = %Time
 @onready var score = %score
 @export var next_level_path : String
+@onready var dashes = %dashes
 
 func _ready():
 	level_completed.updateScenePath(next_level_path)
@@ -26,4 +27,7 @@ func update_score(points):
 
 func update_time(timeElapsed):
 	time.text = "Time : " + timeElapsed
+	
+func update_dashes(dashAmount):
+	dashes.text = "Dashes : " + dashAmount
 		
