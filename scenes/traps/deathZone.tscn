@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkhug4s2cbb2b"]
+
+[sub_resource type="GDScript" id="GDScript_t3wvp"]
+resource_name = "deathzone"
+script/source = "extends Area2D
+
+func _on_area_entered(area):
+	if area.name == \"hitBox\" && area.get_parent().name == \"mainCharacter\":
+		SignalBus.hitMainCharacter()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_am1a2"]
+size = Vector2(1438.5, 20)
+
+[node name="Area2D" type="Area2D"]
+script = SubResource("GDScript_t3wvp")
+
+[node name="hitBox" type="CollisionShape2D" parent="."]
+position = Vector2(720.75, 791)
+shape = SubResource("RectangleShape2D_am1a2")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

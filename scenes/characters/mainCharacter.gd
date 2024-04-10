@@ -107,6 +107,7 @@ func touch_ceiling():
 		ceiling_hit_particels.emit()
 
 func manage_y_movement(delta):
+	
 	var velocity_y = velocity.y
 	if not is_on_floor():
 		velocity_y += gravity * delta	
@@ -117,6 +118,8 @@ func manage_y_movement(delta):
 		coyote_timer.start()
 	if is_on_ceiling():
 		touch_ceiling()
+	if just_dashed:
+		ceiling_jump_resets()		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
 		var do_jump = false
@@ -160,15 +163,14 @@ func dash_management():
 		just_dashed = true
 		is_dashing = true
 		ignore_y_freeze = false
-		#updateDashes(-1)
-		ceiling_jump_resets()
+		updateDashes(-1)
 		dashed.emit(dash_counter)
 		self.is_killable = false
 		dash_timer.start()
 
 func updateDashes(dashAmount):
 	dash_counter += dashAmount
-	dashed.emit(dashAmount)
+	dashed.emit(dash_counter)
 
 func _physics_process(delta):
 	last_delta = delta
@@ -196,13 +198,19 @@ func _on_dash_timer_timeout():
 		freeze()
 	
 
-func _on_dash_hitbox_area_entered(area):	
-	var parent = area.get_parent()
-	if !is_killable && "is_killable" in parent:
+func dash_hitbox_deferred_Check(parent):
+	if is_dashing && "is_killable" in parent && parent.is_killable:
 		updateDashes(2)
 		SignalBus.hit(parent)
-		
 
+func _on_dash_hitbox_area_entered(area):	
+	var parent = area.get_parent()
+	call_deferred("dash_hitbox_deferred_Check", parent)
+		
+func _on_dash_hitbox_area_exited(area):
+	var parent = area.get_parent()
+	call_deferred("dash_hitbox_deferred_Check", parent)
+	
 func freeze():
 	is_frozen = true
 	if !frozen_timer.is_stopped():
@@ -216,3 +224,6 @@ func unfreeze():
 
 func _on_frozen_timer_timeout():
 	unfreeze()
+
+
+

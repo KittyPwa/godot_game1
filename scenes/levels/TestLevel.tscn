@@ -846,19 +846,25 @@ position = Vector2(-724, 795)
 [node name="enemies" type="Node" parent="SceneObjects"]
 
 [node name="bat6" parent="SceneObjects/enemies" instance=ExtResource("6_mb841")]
-position = Vector2(411, 545)
+position = Vector2(829, 189)
 
 [node name="bat7" parent="SceneObjects/enemies" instance=ExtResource("6_mb841")]
-position = Vector2(854, 215)
+position = Vector2(648, 172)
 
 [node name="bat8" parent="SceneObjects/enemies" instance=ExtResource("6_mb841")]
-position = Vector2(627, 209)
+position = Vector2(737, 604)
 
 [node name="bat9" parent="SceneObjects/enemies" instance=ExtResource("6_mb841")]
-position = Vector2(615, 383)
+position = Vector2(832, 587)
 
 [node name="bat10" parent="SceneObjects/enemies" instance=ExtResource("6_mb841")]
-position = Vector2(411, 383)
+position = Vector2(924, 569)
+
+[node name="bat11" parent="SceneObjects/enemies" instance=ExtResource("6_mb841")]
+position = Vector2(638, 618)
+
+[node name="bat12" parent="SceneObjects/enemies" instance=ExtResource("6_mb841")]
+position = Vector2(543, 633)
 
 [node name="spikeTraps" type="Node" parent="SceneObjects"]
 

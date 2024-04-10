@@ -10,6 +10,7 @@ const SPEED = GlobalVars.constants.ennemies.bat.SPEED
 var actual_speed_v
 var actual_speed_h
 const JUMP_VELOCITY = GlobalVars.constants.ennemies.bat.JUMP_VELOCITY
+var can_move = true
 @onready var ray_cast_2d = %RayCast2D
 @onready var ray_cast_2d_2 = %RayCast2D2
 @onready var ray_cast_2d_3 = $RayCast2D3
@@ -28,23 +29,23 @@ func _ready():
 	actual_speed_h = SPEED
 
 func _physics_process(_delta):
-	
-	animation_name = "flying"
-	if !horizontal_move && !vertical_move:
-		animation_name = "idle"
-	animated_sprite_2d.animation = animation_name
-	if ray_cast_2d.is_colliding() or ray_cast_2d_2.is_colliding() or ray_cast_2d_3.is_colliding():			
+	if can_move:
+		animation_name = "flying"
+		if !horizontal_move && !vertical_move:
+			animation_name = "idle"
+		animated_sprite_2d.animation = animation_name
+		if ray_cast_2d.is_colliding() or ray_cast_2d_2.is_colliding() or ray_cast_2d_3.is_colliding():			
+			if horizontal_move:
+				flip_horizontal()
+		if ray_cast_2d_4.is_colliding() or ray_cast_2d_5.is_colliding() or ray_cast_2d_6.is_colliding():			
+			if vertical_move:
+				flip_vertical()
 		if horizontal_move:
-			flip_horizontal()
-	if ray_cast_2d_4.is_colliding() or ray_cast_2d_5.is_colliding() or ray_cast_2d_6.is_colliding():			
+			velocity.x = actual_speed_h
 		if vertical_move:
-			flip_vertical()
-	if horizontal_move:
-		velocity.x = actual_speed_h
-	if vertical_move:
-		velocity.y = actual_speed_v
-	
-	move_and_slide()
+			velocity.y = actual_speed_v
+		
+		move_and_slide()
 
 func flip_horizontal():
 	facing_right = !facing_right
@@ -62,8 +63,17 @@ func flip_vertical():
 	ray_cast_2d_6.target_position.y = ray_cast_2d_6.target_position.y * -1
 
 func _on_hit_box_area_entered(area):	
-	if area.name == "hitBox" && area.get_parent().name == "mainCharacter":
-		SignalBus.hitMainCharacter()
+	if can_move:
+		if area.name == "hitBox" && area.get_parent().name == "mainCharacter":
+			print(area.get_parent().is_killable)
+			SignalBus.hitMainCharacter()
 
 func kill():
+	can_move = false
+	is_killable = false
+	animated_sprite_2d.animation = "hit"
+
+
+func _on_animated_sprite_2d_animation_finished():
 	queue_free()
+	
