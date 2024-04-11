@@ -391,7 +391,7 @@ one_shot = true
 
 [node name="frozenTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.25
+wait_time = 0.15
 one_shot = true
 
 [node name="sounds" type="Node" parent="."]

@@ -827,6 +827,7 @@ layer_0/tile_data = PackedInt32Array(-262144, 0, 9, -196608, 0, 9, -131072, 0, 9
 [node name="mainCharacter" parent="SceneObjects" instance=ExtResource("4_ui0qf")]
 unique_name_in_owner = true
 position = Vector2(41, 616)
+can_dash = false
 
 [node name="Camera2D" type="Camera2D" parent="SceneObjects/mainCharacter"]
 visible = false
