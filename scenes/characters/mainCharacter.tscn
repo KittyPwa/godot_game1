@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b0da5j78o5o4r"]
+[gd_scene load_steps=58 format=3 uid="uid://b0da5j78o5o4r"]
 
 [ext_resource type="Script" path="res://scenes/characters/mainCharacter.gd" id="1_j0tvm"]
 [ext_resource type="Texture2D" uid="uid://brs4x2mbjrlnd" path="res://Pixel Adventure 1/Free/Main Characters/Ninja Frog/Jump (32x32).png" id="1_rfhud"]
@@ -13,38 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://d3rtpk0m2ro8y" path="res://music/wallJump.wav" id="9_5mnds"]
 [ext_resource type="AudioStream" uid="uid://ot43rk1bt6xh" path="res://music/cielingHit.wav" id="10_7yak0"]
 [ext_resource type="PackedScene" uid="uid://dhwi3o6lgba4m" path="res://cielingHitParticles.tscn" id="11_6hqfg"]
-[ext_resource type="PackedScene" uid="uid://wrv67bi4dhp1" path="res://scenes/characters/dashCharge.tscn" id="14_r0xpq"]
-
-[sub_resource type="GDScript" id="GDScript_tgn6b"]
-script/source = "extends Node
-
-@onready var charge_1 = %charge1
-@onready var charge_2 = %charge2
-@onready var charge_3 = %charge3
-@onready var charge_4 = %charge4
-
-func setCharges(chargeAmount):
-	var extinguished = []
-	var ignited = []
-	match chargeAmount:
-		0:
-			extinguished = [charge_1, charge_2, charge_3, charge_4]
-		1:
-			extinguished = [charge_2, charge_3, charge_4]
-			ignited = [charge_1]
-		2:
-			extinguished = [charge_3, charge_4]
-			ignited = [charge_1, charge_2]
-		3:
-			extinguished = [charge_4]
-			ignited = [charge_1, charge_2, charge_3]
-		4:
-			ignited = [charge_1, charge_2, charge_3, charge_4]
-	for ext in extinguished:
-		ext.extinguish()
-	for ignite in ignited:
-		ignite.ignite()
-"
+[ext_resource type="PackedScene" uid="uid://2voia0hcs4as" path="res://scenes/characters/dashCharge.tscn" id="14_r0xpq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1g1x"]
 atlas = ExtResource("2_jnoj1")
@@ -385,14 +354,6 @@ height = 122.0
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_j0tvm")
 is_killable = true
-can_double_jump = true
-can_wall_jump = true
-can_dash = true
-
-[node name="dashCharges" type="Node" parent="."]
-script = SubResource("GDScript_tgn6b")
-
-[node name="AnimatedSprite2D" parent="dashCharges" instance=ExtResource("14_r0xpq")]
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -410,7 +371,6 @@ shape = SubResource("RectangleShape2D_red1v")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="hitBox" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 position = Vector2(33, 32)
@@ -467,6 +427,26 @@ unique_name_in_owner = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dashHitbox"]
 position = Vector2(32, 29)
 shape = SubResource("CapsuleShape2D_58bof")
+
+[node name="charge_1" parent="." instance=ExtResource("14_r0xpq")]
+unique_name_in_owner = true
+visible = false
+
+[node name="charge_2" parent="." instance=ExtResource("14_r0xpq")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(20, -9)
+
+[node name="charge_3" parent="." instance=ExtResource("14_r0xpq")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(43, -9)
+
+[node name="charge_4" parent="." instance=ExtResource("14_r0xpq")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(65, 0)
+frame_progress = 0.558644
 
 [connection signal="area_entered" from="hitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]

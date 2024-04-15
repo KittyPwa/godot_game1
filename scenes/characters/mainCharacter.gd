@@ -46,6 +46,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	call_deferred("updateDashes",1)
+	hideCharges(can_dash)
+	print(can_double_jump)
+	print(can_wall_jump)
+	print(can_dash)
 
 func kill():
 	can_move = false
@@ -87,7 +91,6 @@ func manage_x_movement():
 		velocity_x = DASH_SPEED * direction_x	
 	if is_frozen && !ignore_y_freeze:
 		velocity_x = 0
-	#print(velocity_x)
 	velocity.x = velocity_x
 
 func touch_floor():
@@ -169,12 +172,12 @@ func dash_management():
 		dash_timer.start()
 
 func updateDashes(dashAmount):
-	dash_counter += dashAmount
-	dashed.emit(dash_counter)
+	dash_counter = 4 if dash_counter + dashAmount > 4 else dash_counter + dashAmount
+	setCharges(dash_counter)
 
 func _physics_process(delta):
 	last_delta = delta
-	if(can_move):	
+	if(can_move && !SignalBus.isGamePaused()):	
 		just_dashed = false
 		dash_management()
 		manage_animations()
@@ -225,5 +228,36 @@ func unfreeze():
 func _on_frozen_timer_timeout():
 	unfreeze()
 
+@onready var charge_1 = %charge_1
+@onready var charge_2 = %charge_2
+@onready var charge_3 = %charge_3
+@onready var charge_4 = %charge_4
 
+func hideCharges(hide):
+	charge_1.visible = hide
+	charge_2.visible = hide
+	charge_3.visible = hide
+	charge_4.visible = hide
+
+func setCharges(chargeAmount):
+	var extinguished = []
+	var ignited = []
+	match chargeAmount:
+		0:
+			extinguished = [charge_1, charge_2, charge_3, charge_4]
+		1:
+			extinguished = [charge_2, charge_3, charge_4]
+			ignited = [charge_1]
+		2:
+			extinguished = [charge_3, charge_4]
+			ignited = [charge_1, charge_2]
+		3:
+			extinguished = [charge_4]
+			ignited = [charge_1, charge_2, charge_3]
+		4:
+			ignited = [charge_1, charge_2, charge_3, charge_4]
+	for ext in extinguished:
+		ext.extinguish()
+	for ignite in ignited:
+		ignite.ignite()
 

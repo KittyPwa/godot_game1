@@ -22,18 +22,18 @@ func _ready():
 	actual_speed = SPEED
 
 func _physics_process(delta):
-	
-	animation_name = "idle"
-	if(velocity.y != 0):
-		animation_name = "fall"	
-	#animated_sprite_2d.animation = animation_name
-	if ray_cast_2d.is_colliding() or ray_cast_2d_2.is_colliding() or ray_cast_2d_3.is_colliding():
-		flip()
-	if not is_on_floor():
-		velocity.y += gravity * delta		
-	velocity.x = actual_speed
-	
-	move_and_slide()
+	if !SignalBus.isGamePaused():
+		animation_name = "idle"
+		if(velocity.y != 0):
+			animation_name = "fall"	
+		#animated_sprite_2d.animation = animation_name
+		if ray_cast_2d.is_colliding() or ray_cast_2d_2.is_colliding() or ray_cast_2d_3.is_colliding():
+			flip()
+		if not is_on_floor():
+			velocity.y += gravity * delta		
+		velocity.x = actual_speed
+		
+		move_and_slide()
 
 func flip():
 	facing_right = !facing_right

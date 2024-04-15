@@ -5,10 +5,11 @@ extends CanvasLayer
 @onready var time = %Time
 @onready var score = %score
 @export var next_level_path : String
-@onready var dashes = %dashes
+@onready var pause = %Pause
 
 func _ready():
 	level_completed.updateScenePath(next_level_path)
+	SignalBus.connect("togglePause", togglePause)
 
 func show_game_over():
 	game_over.visible = true
@@ -27,7 +28,8 @@ func update_score(points):
 
 func update_time(timeElapsed):
 	time.text = "Time : " + timeElapsed
+
+func togglePause(is_paused):
+	pause.visible = is_paused
 	
-func update_dashes(dashAmount):
-	dashes.text = "Dashes : " + dashAmount
-		
+

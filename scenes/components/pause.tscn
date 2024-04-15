@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqvqrm6wwrdgt"]
+
+[ext_resource type="Texture2D" uid="uid://bbbs3jqtm5vac" path="res://Pixel Adventure 1/Free/Other/pause.png" id="1_nd3xl"]
+[ext_resource type="PackedScene" uid="uid://c6nguo3c23jfp" path="res://scenes/components/SceneButton.tscn" id="2_v6aat"]
+
+[sub_resource type="GDScript" id="GDScript_oo51t"]
+script/source = "extends Control
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3rqw"]
+
+[node name="Pause" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_oo51t")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0.905882, 0.905882, 0.960784, 1)
+self_modulate = Color(0.623529, 0.419608, 0.819608, 0.988235)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -103.0
+offset_right = 202.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o3rqw")
+
+[node name="settingsImg" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -91.0
+offset_right = 161.0
+offset_bottom = 5.00001
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_nd3xl")
+
+[node name="settings" parent="Panel" instance=ExtResource("2_v6aat")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 145.0
+offset_top = 164.0
+offset_right = 254.0
+offset_bottom = 195.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Settings
+"
+is_setting = true
+
+[node name="retry" parent="Panel" instance=ExtResource("2_v6aat")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 269.0
+offset_top = 164.0
+offset_right = 378.0
+offset_bottom = 195.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Retry"
+is_reset = true
+
+[node name="mainMenu" parent="Panel" instance=ExtResource("2_v6aat")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 15.0
+offset_top = 164.0
+offset_right = 124.0
+offset_bottom = 195.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Main Menu"
+scenePath = "res://scenes/levels/main_menu.tscn"

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://lrtbmhbewluh"]
+[gd_scene load_steps=6 format=3 uid="uid://lrtbmhbewluh"]
 
 [ext_resource type="Script" path="res://scenes/components/scoreManager.gd" id="1_g64fd"]
 [ext_resource type="PackedScene" uid="uid://d3pvaayrqvfip" path="res://scenes/gameOver.tscn" id="1_o0g7h"]
 [ext_resource type="PackedScene" uid="uid://c1y0bxeua6ire" path="res://scenes/components/levelComplete.tscn" id="2_grq5u"]
+[ext_resource type="PackedScene" uid="uid://bqvqrm6wwrdgt" path="res://scenes/components/pause.tscn" id="4_pnewm"]
+[ext_resource type="PackedScene" uid="uid://68gni802hogi" path="res://scenes/components/settings.tscn" id="5_w8834"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_g64fd")
@@ -19,7 +21,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 36.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -46,19 +48,6 @@ offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Points : 0"
-vertical_alignment = 1
-
-[node name="dashes" type="Label" parent="Panel"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 71.0
-offset_bottom = 34.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Dashes : 0"
 vertical_alignment = 1
 
 [node name="gameOver" parent="Panel" instance=ExtResource("1_o0g7h")]
@@ -89,3 +78,18 @@ offset_top = 220.5
 offset_right = 446.5
 offset_bottom = 220.5
 nextLevelPath = "res://scenes/levels/main_menu.tscn"
+
+[node name="Pause" parent="Panel" instance=ExtResource("4_pnewm")]
+unique_name_in_owner = true
+visible = false
+offset_left = 534.0
+offset_top = 258.0
+offset_right = 534.0
+offset_bottom = 258.0
+
+[node name="Settings" parent="Panel" instance=ExtResource("5_w8834")]
+visible = false
+offset_left = -115.0
+offset_top = -101.0
+offset_right = -115.0
+offset_bottom = -101.0

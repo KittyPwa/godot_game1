@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgxaafypuv3pi"]
+[gd_scene load_steps=9 format=3 uid="uid://dgxaafypuv3pi"]
 
 [ext_resource type="Texture2D" uid="uid://ydbsmncg14mw" path="res://Green.png" id="1_rpqjc"]
 [ext_resource type="Script" path="res://scenes/levels/main_menu.gd" id="1_w67so"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://32mdwmfvy0vq" path="res://music/background.tscn" id="5_726f2"]
 [ext_resource type="Texture2D" uid="uid://ctr8ad4g4mmoj" path="res://Pixel Adventure 1/Free/Other/settingsIcon.png" id="5_sph26"]
 [ext_resource type="PackedScene" uid="uid://c6nguo3c23jfp" path="res://scenes/components/SceneButton.tscn" id="7_w1t2e"]
+[ext_resource type="PackedScene" uid="uid://68gni802hogi" path="res://scenes/components/settings.tscn" id="8_xd0md"]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_w67so")
@@ -75,9 +76,9 @@ scenePath = "res://scenes/levels/level3.tscn"
 
 [node name="Level4" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
 layout_mode = 1
-offset_left = -67.0
+offset_left = -78.0
 offset_top = 5.561
-offset_right = 42.0
+offset_right = 31.0
 offset_bottom = 28.993
 theme_override_font_sizes/font_size = 30
 text = "Level 4"
@@ -85,9 +86,9 @@ scenePath = "res://scenes/levels/level4.tscn"
 
 [node name="Level6" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
 layout_mode = 1
-offset_left = -67.0
+offset_left = -78.0
 offset_top = 178.561
-offset_right = 42.0
+offset_right = 31.0
 offset_bottom = 201.993
 theme_override_font_sizes/font_size = 30
 text = "Level 6"
@@ -95,9 +96,9 @@ scenePath = "res://scenes/levels/level6.tscn"
 
 [node name="Level5" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
 layout_mode = 1
-offset_left = -68.0
-offset_top = 91.561
-offset_right = 41.0
+offset_left = -79.0
+offset_top = 91.5609
+offset_right = 30.0
 offset_bottom = 114.993
 theme_override_font_sizes/font_size = 30
 text = "Level 5"
@@ -123,6 +124,17 @@ theme_override_font_sizes/font_size = 30
 text = "Level 8"
 scenePath = "res://scenes/levels/level8.tscn"
 
+[node name="Level9" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
+layout_mode = 1
+offset_left = 149.0
+offset_top = 178.561
+offset_right = 258.0
+offset_bottom = 201.993
+theme_override_font_sizes/font_size = 30
+text = "Level 9
+"
+scenePath = "res://scenes/levels/level9.tscn"
+
 [node name="TextureRect" type="TextureRect" parent="."]
 unique_name_in_owner = true
 anchors_preset = 8
@@ -141,5 +153,11 @@ texture = ExtResource("2_2ckti")
 [node name="background" parent="." instance=ExtResource("5_726f2")]
 unique_name_in_owner = true
 targetBackgroundPath = "res://music/background.wav"
+
+[node name="Settings" parent="." instance=ExtResource("8_xd0md")]
+unique_name_in_owner = true
+visible = false
+offset_left = -72.0
+offset_right = -72.0
 
 [connection signal="pressed" from="TextureRect2/settings" to="." method="_on_settings_pressed"]

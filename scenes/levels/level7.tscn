@@ -832,6 +832,8 @@ layer_0/tile_data = PackedInt32Array(-262144, 0, 9, -196608, 0, 9, -131072, 0, 9
 [node name="mainCharacter" parent="SceneObjects" instance=ExtResource("4_cbks8")]
 unique_name_in_owner = true
 position = Vector2(603, 600)
+can_double_jump = true
+can_wall_jump = true
 
 [node name="Camera2D" type="Camera2D" parent="SceneObjects/mainCharacter"]
 visible = false
@@ -926,7 +928,7 @@ position = Vector2(-1134, 1348)
 rotation = 3.14159
 
 [node name="trophy" parent="." instance=ExtResource("8_ktd0n")]
-position = Vector2(1344, -512)
+position = Vector2(1344, -495)
 
 [node name="background" parent="." instance=ExtResource("9_88wyi")]
 targetBackgroundPath = "res://music/hiTempo.wav"

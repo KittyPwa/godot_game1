@@ -29,7 +29,7 @@ func _ready():
 	actual_speed_h = SPEED
 
 func _physics_process(_delta):
-	if can_move:
+	if can_move && !SignalBus.isGamePaused():
 		animation_name = "flying"
 		if !horizontal_move && !vertical_move:
 			animation_name = "idle"

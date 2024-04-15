@@ -832,7 +832,8 @@ layer_0/tile_data = PackedInt32Array(-262144, 0, 9, -196608, 0, 9, -131072, 0, 9
 [node name="mainCharacter" parent="SceneObjects" instance=ExtResource("4_pf6iq")]
 unique_name_in_owner = true
 position = Vector2(94, 627)
-can_dash = false
+can_double_jump = true
+can_wall_jump = true
 
 [node name="Camera2D" type="Camera2D" parent="SceneObjects/mainCharacter"]
 visible = false
@@ -1416,4 +1417,4 @@ targetBackgroundPath = "res://music/hiTempo.wav"
 
 [node name="scoreManager" parent="." instance=ExtResource("10_o6kld")]
 unique_name_in_owner = true
-next_level_path = "res://scenes/levels/main_menu.tscn"
+next_level_path = "res://scenes/levels/level9.tscn"

@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://wrv67bi4dhp1"]
+[gd_scene load_steps=11 format=3 uid="uid://2voia0hcs4as"]
 
 [ext_resource type="Texture2D" uid="uid://4vo5r83hgrfb" path="res://Pixel Adventure 1/Free/Other/Dust Particle.png" id="1_nc0w4"]
 [ext_resource type="Texture2D" uid="uid://4usfcw8i6frk" path="res://Pixel Adventure 1/Free/Other/fire.png" id="2_stgin"]
+[ext_resource type="Script" path="res://scenes/characters/dashCharge.gd" id="3_hxtdp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gj4cm"]
 atlas = ExtResource("2_stgin")
@@ -65,3 +66,5 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_jkgyf")
 animation = &"ignited"
 autoplay = "ignited"
+frame_progress = 0.664858
+script = ExtResource("3_hxtdp")

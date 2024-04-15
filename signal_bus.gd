@@ -5,9 +5,13 @@ signal setLevel
 signal resetMusic
 signal hit_and_kill
 signal completeLevel
+signal togglePause
+signal toggleSettings
+
+var is_paused = false
 
 var currentLevel = ''
-var main_character_is_dead = false
+var main_character_is_dead = true
 
 func complete_level():
 	completeLevel.emit()
@@ -27,10 +31,29 @@ func setMainCharacterDead():
 func is_main_character_dead():
 	return main_character_is_dead;
 
+func toggleSetting():
+	toggleSettings.emit()
+
+func isGamePaused():
+	return is_paused
+
+func emitPause():
+	togglePause.emit(is_paused)
+
+func showPause():
+	is_paused = !is_paused
+	emitPause()
+	
+
 func set_level(level):
-	main_character_is_dead = false
+	var splitLevel = level.split("/")
+	main_character_is_dead = true
+	if ("level" in splitLevel[splitLevel.size() - 1]):
+		main_character_is_dead = false
 	setLevel.emit(level)
 	updateLevel(level)
+	is_paused = false
+	emitPause()
 	
 func updateLevel(level):
 	currentLevel = level
@@ -39,3 +62,5 @@ func reset_level():
 	resetMusic.emit()
 	main_character_is_dead = false
 	setLevel.emit(currentLevel)
+	is_paused = false
+	emitPause()

@@ -4,6 +4,10 @@ var points = 0
 var time = 0
 var startTime = 0
 var ongoing = true;
+var pauseTime = 0
+var lastPause = 0
+var totalPauseTime = 0
+var lastPauseStart = null
 
 @onready var main_character = %mainCharacter
 @onready var score_manager = %scoreManager
@@ -14,17 +18,27 @@ func _ready():
 	SignalBus.connect("setLevel", updateLevel)
 	SignalBus.connect("hit_and_kill", hitAndKill)
 	SignalBus.connect("completeLevel", completeLevel)
-	if main_character:
-		main_character.connect("dashed", update_dash)
 	startTime = Time.get_ticks_msec()
 	
 func _process(_delta):
 	if(ongoing):
-		time = Time.get_ticks_msec() - startTime
+		if SignalBus.isGamePaused():
+			pauseTime = totalPauseTime + Time.get_ticks_msec() - lastPauseStart
+		time = Time.get_ticks_msec() - startTime - pauseTime
 		if score_manager != null:
-			score_manager.update_time(str(snappedf(float(time)/ 1000,0.01)))		
-		
-	
+			score_manager.update_time(str(snappedf(float(time)/ 1000,0.01)))
+
+func _unhandled_input(event):
+		if event is InputEventKey:
+			if !SignalBus.is_main_character_dead():
+				if Input.is_action_just_pressed("reset"):
+					SignalBus.call_deferred("reset_level")
+				if Input.is_action_just_pressed("escape"):
+					SignalBus.showPause()
+					lastPauseStart = Time.get_ticks_msec()
+					if !SignalBus.isGamePaused():
+						totalPauseTime = pauseTime
+					
 func completeLevel():
 	ongoing = false
 	main_character.kill()
@@ -38,9 +52,6 @@ func hitAndKill(node):
 
 func updateLevel(level):
 	get_tree().change_scene_to_file(level)
-
-func update_dash(dashAmount):
-	score_manager.update_dashes(str(dashAmount))
 
 func add_points():
 	points += 100
