@@ -47,9 +47,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	call_deferred("updateDashes",1)
 	hideCharges(can_dash)
-	print(can_double_jump)
-	print(can_wall_jump)
-	print(can_dash)
 
 func kill():
 	can_move = false

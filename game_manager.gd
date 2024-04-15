@@ -8,6 +8,9 @@ var pauseTime = 0
 var lastPause = 0
 var totalPauseTime = 0
 var lastPauseStart = null
+var deathCounter = 0
+
+@export var levelPath: String
 
 @onready var main_character = %mainCharacter
 @onready var score_manager = %scoreManager
@@ -43,7 +46,7 @@ func completeLevel():
 	ongoing = false
 	main_character.kill()
 	score_manager.show_level_completed()
-	score_manager.update_level_completed(points,str(snappedf(float(time)/ 1000,0.01)))
+	score_manager.update_level_completed(points,str(snappedf(float(time)/ 1000,0.01)), SignalBus.getDeathCounter(levelPath))
 	
 
 func hitAndKill(node):
@@ -58,10 +61,11 @@ func add_points():
 	score_manager.update_score(str(points))
 
 func hitMainCharacter():
-	if(main_character.is_killable):
+	if(main_character.is_killable && !SignalBus.is_main_character_dead()):
+		SignalBus.addToDeathCounter(levelPath)
 		main_character.kill()
 		score_manager.show_game_over()
-		score_manager.set_game_over_score(points)
+		score_manager.set_game_over_data(points,SignalBus.getDeathCounter(levelPath))
 		SignalBus.setMainCharacterDead()
 		ongoing = false
 

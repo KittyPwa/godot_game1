@@ -809,6 +809,7 @@ sources/0 = SubResource("TileSetAtlasSource_kw4ku")
 
 [node name="GameManager" parent="." instance=ExtResource("1_60ymt")]
 unique_name_in_owner = true
+levelPath = "7"
 
 [node name="SceneObjects" type="Node" parent="."]
 
@@ -863,6 +864,9 @@ position = Vector2(368, -605)
 
 [node name="Collectable6" parent="SceneObjects/Collectables" instance=ExtResource("5_3dq3v")]
 position = Vector2(777, -249)
+
+[node name="Collectable7" parent="SceneObjects/Collectables" instance=ExtResource("5_3dq3v")]
+position = Vector2(591, -476)
 
 [node name="enemies" type="Node" parent="SceneObjects"]
 

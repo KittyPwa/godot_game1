@@ -792,6 +792,7 @@ sources/0 = SubResource("TileSetAtlasSource_kw4ku")
 
 [node name="GameManager" parent="." instance=ExtResource("1_8qwrc")]
 unique_name_in_owner = true
+levelPath = "5"
 
 [node name="SceneObjects" type="Node" parent="."]
 

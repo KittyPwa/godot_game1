@@ -767,6 +767,7 @@ sources/0 = SubResource("TileSetAtlasSource_kw4ku")
 
 [node name="GameManager" parent="." instance=ExtResource("1_8sqkr")]
 unique_name_in_owner = true
+levelPath = "2"
 
 [node name="SceneObjects" type="Node" parent="."]
 
@@ -790,9 +791,6 @@ layer_0/tile_data = PackedInt32Array(983039, 524288, 5, 917504, 458752, 4, 91750
 [node name="mainCharacter" parent="SceneObjects" instance=ExtResource("4_357oh")]
 unique_name_in_owner = true
 position = Vector2(7, 584)
-can_double_jump = false
-can_wall_jump = false
-can_dash = false
 
 [node name="Camera2D" type="Camera2D" parent="SceneObjects/mainCharacter"]
 visible = false

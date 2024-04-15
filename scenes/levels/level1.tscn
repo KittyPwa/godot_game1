@@ -773,6 +773,7 @@ script = SubResource("GDScript_0msgx")
 
 [node name="GameManager" parent="." instance=ExtResource("1_771k0")]
 unique_name_in_owner = true
+levelPath = "1"
 
 [node name="SceneObjects" type="Node" parent="."]
 
@@ -795,9 +796,6 @@ layer_0/tile_data = PackedInt32Array(720899, 458752, 0, 720900, 458752, 0, 72090
 [node name="mainCharacter" parent="SceneObjects" instance=ExtResource("4_oph4i")]
 unique_name_in_owner = true
 position = Vector2(-1088, 436)
-can_double_jump = false
-can_wall_jump = false
-can_dash = false
 
 [node name="Camera2D" parent="SceneObjects/mainCharacter" instance=ExtResource("5_4fq5n")]
 

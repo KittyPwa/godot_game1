@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://caiq3o8m8a578"]
+
+[ext_resource type="PackedScene" uid="uid://drljy05vt1umx" path="res://scenes/game_manager.tscn" id="1_76cng"]
+[ext_resource type="Texture2D" uid="uid://kekamxu4tf81" path="res://Pixel Adventure 1/Free/Background/Blue.png" id="2_yowvg"]
+[ext_resource type="PackedScene" uid="uid://b0da5j78o5o4r" path="res://scenes/characters/mainCharacter.tscn" id="4_jfk2m"]
+[ext_resource type="PackedScene" uid="uid://c0akkuhnhuvmq" path="res://scenes/collectables/collectable.tscn" id="5_afpf0"]
+[ext_resource type="PackedScene" uid="uid://bjevibl8eaeot" path="res://scenes/enemies/bat.tscn" id="6_3vcje"]
+[ext_resource type="PackedScene" uid="uid://doeqtpok6hoir" path="res://scenes/traps/spikes.tscn" id="7_y33ri"]
+[ext_resource type="PackedScene" uid="uid://db0oyyiotsenp" path="res://scenes/trophy.tscn" id="10_vdxyx"]
+[ext_resource type="PackedScene" uid="uid://32mdwmfvy0vq" path="res://music/background.tscn" id="11_oolig"]
+[ext_resource type="PackedScene" uid="uid://lrtbmhbewluh" path="res://scenes/components/scoreManager.tscn" id="12_vquuy"]
+
+[node name="Node" type="Node"]
+
+[node name="GameManager" parent="." instance=ExtResource("1_76cng")]
+unique_name_in_owner = true
+levelPath = "9"
+
+[node name="SceneObjects" type="Node" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="SceneObjects"]
+texture_filter = 1
+offset_left = 20.0
+offset_top = -4484.0
+offset_right = 4748.0
+offset_bottom = -12.0
+texture = ExtResource("2_yowvg")
+stretch_mode = 1
+
+[node name="mainCharacter" parent="SceneObjects" instance=ExtResource("4_jfk2m")]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(-3037, 122)
+can_double_jump = true
+can_wall_jump = true
+can_dash = true
+
+[node name="Camera2D" type="Camera2D" parent="SceneObjects/mainCharacter"]
+visible = false
+position = Vector2(35, 39)
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+
+[node name="Collectables" type="Node" parent="SceneObjects"]
+
+[node name="Collectable17" parent="SceneObjects/Collectables" instance=ExtResource("5_afpf0")]
+position = Vector2(-3320, -1323)
+
+[node name="enemies" type="Node" parent="SceneObjects"]
+
+[node name="bat4" parent="SceneObjects/enemies" instance=ExtResource("6_3vcje")]
+position = Vector2(-3332, -1423)
+
+[node name="spikeTraps" type="Node" parent="SceneObjects"]
+
+[node name="spike5" parent="SceneObjects/spikeTraps" instance=ExtResource("7_y33ri")]
+position = Vector2(-3406, -1235)
+
+[node name="spike6" parent="SceneObjects/spikeTraps" instance=ExtResource("7_y33ri")]
+position = Vector2(-3355, -1235)
+
+[node name="spike7" parent="SceneObjects/spikeTraps" instance=ExtResource("7_y33ri")]
+position = Vector2(-3307, -1235)
+
+[node name="spike29" parent="SceneObjects/spikeTraps" instance=ExtResource("7_y33ri")]
+position = Vector2(-3463, -1226)
+rotation = 1.5708
+
+[node name="spike31" parent="SceneObjects/spikeTraps" instance=ExtResource("7_y33ri")]
+position = Vector2(-3601, -1250)
+rotation = 3.14159
+
+[node name="spike40" parent="SceneObjects/spikeTraps" instance=ExtResource("7_y33ri")]
+position = Vector2(-3587, -1408)
+rotation = 1.5708
+
+[node name="deathzones" type="Node" parent="SceneObjects"]
+
+[node name="panels" type="Node" parent="SceneObjects"]
+
+[node name="backdrops" type="Node" parent="SceneObjects"]
+
+[node name="trophies" type="Node" parent="SceneObjects"]
+
+[node name="trophy" parent="SceneObjects/trophies" instance=ExtResource("10_vdxyx")]
+position = Vector2(-3443, -1417)
+
+[node name="background" parent="." instance=ExtResource("11_oolig")]
+targetBackgroundPath = "res://music/hiTempo.wav"
+
+[node name="scoreManager" parent="." instance=ExtResource("12_vquuy")]
+unique_name_in_owner = true
+next_level_path = "res://scenes/levels/main_menu.tscn"

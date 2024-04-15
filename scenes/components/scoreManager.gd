@@ -14,14 +14,14 @@ func _ready():
 func show_game_over():
 	game_over.visible = true
 
-func set_game_over_score(points):
-	game_over.set_score(points)
+func set_game_over_data(points, deaths):
+	game_over.set_data(points, deaths)
 
 func show_level_completed():
 	level_completed.visible = true
 
-func update_level_completed(points, timeEllapsed):	
-	level_completed.updateScoreAndTimer(points, timeEllapsed)
+func update_level_completed(points, timeEllapsed, deaths):	
+	level_completed.updateData(points, timeEllapsed, deaths)
 
 func update_score(points):
 	score.text = "Points : " + points

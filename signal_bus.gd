@@ -8,10 +8,22 @@ signal completeLevel
 signal togglePause
 signal toggleSettings
 
+var deathCounter = {}
+
 var is_paused = false
 
 var currentLevel = ''
 var main_character_is_dead = true
+
+func addToDeathCounter(levelPath):
+	if !deathCounter.has(levelPath):
+		deathCounter[levelPath] = 1
+	else:
+		deathCounter[levelPath] += 1
+
+func getDeathCounter(levelPath):
+	return deathCounter[levelPath]
+
 
 func complete_level():
 	completeLevel.emit()
@@ -21,6 +33,8 @@ func hit(node):
 		hitMainCharacter()
 	else:
 		hit_and_kill.emit(node)
+
+
 
 func hitMainCharacter():
 	hit_main_character.emit()
