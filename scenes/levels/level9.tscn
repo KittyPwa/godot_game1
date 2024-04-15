@@ -1189,16 +1189,16 @@ position = Vector2(324, -1657)
 [node name="deathzones" type="Node" parent="SceneObjects"]
 
 [node name="deathzone" parent="SceneObjects/deathzones" instance=ExtResource("11_hsuio")]
-position = Vector2(-134, -1383)
+position = Vector2(2059, 905)
 scale = Vector2(3, 3)
 
 [node name="deathzone2" parent="SceneObjects/deathzones" instance=ExtResource("11_hsuio")]
-position = Vector2(5846, -3287)
+position = Vector2(3492, -1208)
 rotation = 1.5708
 scale = Vector2(3, 3)
 
 [node name="deathzone3" parent="SceneObjects/deathzones" instance=ExtResource("11_hsuio")]
-position = Vector2(1600, -2686)
+position = Vector2(1190, -2329)
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 

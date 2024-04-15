@@ -897,12 +897,10 @@ rotation = 3.14159
 
 [node name="StaticBody2D2" parent="SceneObjects/fall_throughs" instance=ExtResource("10_m0mvy")]
 position = Vector2(425, 503)
-rotation = 1.5708
+which_side = 2
 
 [node name="StaticBody2D3" parent="SceneObjects/fall_throughs" instance=ExtResource("10_m0mvy")]
-position = Vector2(764, 465)
-rotation = -1.5708
-which_side = 2
+position = Vector2(771, 490)
 
 [node name="background" parent="." instance=ExtResource("9_uh57r")]
 targetBackgroundPath = "res://music/boss_battle.wav"

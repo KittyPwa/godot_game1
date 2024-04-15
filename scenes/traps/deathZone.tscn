@@ -1,8 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkhug4s2cbb2b"]
+[gd_scene load_steps=4 format=3 uid="uid://bkhug4s2cbb2b"]
 
 [sub_resource type="GDScript" id="GDScript_t3wvp"]
 resource_name = "deathzone"
 script/source = "extends Area2D
+@export var is_visible: bool
+@onready var sprite_2d = %Sprite2D
+
+func _ready():
+	if !is_visible:
+		sprite_2d.visible = false
 
 func _on_area_entered(area):
 	if area.name == \"hitBox\" && area.get_parent().name == \"mainCharacter\":
@@ -12,11 +18,20 @@ func _on_area_entered(area):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_am1a2"]
 size = Vector2(1438.5, 20)
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_vxghu"]
+
 [node name="Area2D" type="Area2D"]
 script = SubResource("GDScript_t3wvp")
 
 [node name="hitBox" type="CollisionShape2D" parent="."]
-position = Vector2(720.75, 791)
 shape = SubResource("RectangleShape2D_am1a2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.796078, 0, 0.137255, 1)
+position = Vector2(-0.12315, 0.051123)
+rotation = 3.14159
+scale = Vector2(1438.29, 19.9202)
+texture = SubResource("CanvasTexture_vxghu")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
