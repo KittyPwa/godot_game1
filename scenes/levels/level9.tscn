@@ -1481,4 +1481,4 @@ targetBackgroundPath = "res://music/hiTempo.wav"
 
 [node name="scoreManager" parent="." instance=ExtResource("10_ss07p")]
 unique_name_in_owner = true
-next_level_path = "res://scenes/levels/main_menu.tscn"
+next_level_path = "res://scenes/levels/level10.tscn"

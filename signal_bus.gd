@@ -22,7 +22,7 @@ func addToDeathCounter(levelPath):
 		deathCounter[levelPath] += 1
 
 func getDeathCounter(levelPath):
-	return deathCounter[levelPath]
+	return deathCounter[levelPath] if deathCounter.has(levelPath) else 0
 
 
 func complete_level():

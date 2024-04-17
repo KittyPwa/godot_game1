@@ -44,9 +44,9 @@ icon = ExtResource("5_sph26")
 
 [node name="Level2" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
 layout_mode = 1
-offset_left = -323.0
+offset_left = -448.0
 offset_top = 92.0
-offset_right = -214.0
+offset_right = -339.0
 offset_bottom = 115.432
 theme_override_font_sizes/font_size = 30
 text = "Level 2
@@ -55,9 +55,9 @@ scenePath = "res://scenes/levels/level2.tscn"
 
 [node name="Level1" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
 layout_mode = 1
-offset_left = -323.0
+offset_left = -448.0
 offset_top = 5.561
-offset_right = -214.0
+offset_right = -339.0
 offset_bottom = 28.993
 theme_override_font_sizes/font_size = 30
 text = "Level 1"
@@ -65,9 +65,9 @@ scenePath = "res://scenes/levels/level1.tscn"
 
 [node name="Level3" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
 layout_mode = 1
-offset_left = -323.0
+offset_left = -448.0
 offset_top = 177.561
-offset_right = -214.0
+offset_right = -339.0
 offset_bottom = 200.993
 theme_override_font_sizes/font_size = 30
 text = "Level 3
@@ -76,9 +76,9 @@ scenePath = "res://scenes/levels/level3.tscn"
 
 [node name="Level4" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
 layout_mode = 1
-offset_left = -78.0
+offset_left = -203.0
 offset_top = 5.561
-offset_right = 31.0
+offset_right = -94.0
 offset_bottom = 28.993
 theme_override_font_sizes/font_size = 30
 text = "Level 4"
@@ -86,9 +86,9 @@ scenePath = "res://scenes/levels/level4.tscn"
 
 [node name="Level6" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
 layout_mode = 1
-offset_left = -78.0
+offset_left = -203.0
 offset_top = 178.561
-offset_right = 31.0
+offset_right = -94.0
 offset_bottom = 201.993
 theme_override_font_sizes/font_size = 30
 text = "Level 6"
@@ -96,9 +96,9 @@ scenePath = "res://scenes/levels/level6.tscn"
 
 [node name="Level5" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
 layout_mode = 1
-offset_left = -79.0
+offset_left = -204.0
 offset_top = 91.5609
-offset_right = 30.0
+offset_right = -95.0
 offset_bottom = 114.993
 theme_override_font_sizes/font_size = 30
 text = "Level 5"
@@ -106,19 +106,29 @@ scenePath = "res://scenes/levels/level5.tscn"
 
 [node name="Level7" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
 layout_mode = 1
-offset_left = 149.0
+offset_left = 24.0
 offset_top = 5.561
-offset_right = 258.0
+offset_right = 133.0
 offset_bottom = 28.993
 theme_override_font_sizes/font_size = 30
 text = "Level 7"
 scenePath = "res://scenes/levels/level7.tscn"
 
+[node name="Level10" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
+layout_mode = 1
+offset_left = 228.5
+offset_top = 5.561
+offset_right = 352.5
+offset_bottom = 28.993
+theme_override_font_sizes/font_size = 30
+text = "Level 10"
+scenePath = "res://scenes/levels/level10.tscn"
+
 [node name="Level8" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
 layout_mode = 1
-offset_left = 149.0
-offset_top = 91.561
-offset_right = 258.0
+offset_left = 24.0
+offset_top = 91.5609
+offset_right = 133.0
 offset_bottom = 114.993
 theme_override_font_sizes/font_size = 30
 text = "Level 8"
@@ -126,9 +136,9 @@ scenePath = "res://scenes/levels/level8.tscn"
 
 [node name="Level9" parent="TextureRect2" instance=ExtResource("7_w1t2e")]
 layout_mode = 1
-offset_left = 149.0
+offset_left = 24.0
 offset_top = 178.561
-offset_right = 258.0
+offset_right = 133.0
 offset_bottom = 201.993
 theme_override_font_sizes/font_size = 30
 text = "Level 9

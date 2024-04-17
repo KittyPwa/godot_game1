@@ -142,7 +142,7 @@ texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qiki2")
 autoplay = "default"
-frame_progress = 0.583884
+frame_progress = 0.110774
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xoi5p")
